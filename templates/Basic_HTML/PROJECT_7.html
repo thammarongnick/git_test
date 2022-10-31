@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <style>
+        .div1 {
+            height: 50px;
+            width: 1870px;
+            background-color: lightblue;
+        }
+        
+        span {
+            background-color: white;
+            color: red;
+            font-style: italic;
+            font-size: 30px;
+            margin-left: 10px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-weight: bold;
+        }
+        
+        .div2 {
+            height: 50px;
+            width: 1870px;
+            background-color: lightblue;
+        }
+        
+        .div3 {
+            height: 125px;
+            width: 1870px;
+            background-color: whitesmoke;
+        }
+        
+        .a {
+            margin-top: 30px;
+            margin-left: 10px;
+        }
+        
+        .div4 {
+            background-color: lightgray;
+            height: 743px;
+            width: 1870px;
+        }
+        
+        table,
+        th {
+            border: 1px solid white;
+            border-collapse: collapse;
+            width: 1870px;
+            height: 30px;
+            text-align: center;
+            background-color: lightblue;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- การเชื่อมลิงค์  css , js -->
+    <link rel="stylesheet" href="{% static 'css/proj7_scrap_control/proj7_page_1_my_content.css' %}">
+    <!-- link องค์ประกอบคือ hrefแอตทริบิวต์ ซึ่งระบุปลายทางของลิงก์ -->
+    <script src="{% static 'js/proj7_scrap_control/proj7_page_1_my_content.js' %}"></script>
+
+    <!-- การเชื่อมลิงค์ Bootstrap => css , js -->
+    <script type="text/javascript" src="{% static 'js/Bootstrap/bootstrap.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/Bootstrap/bootstrap.min.css'%}">
+
+
+    <div class="div1">
+
+        <span>PCAP</span>
+        <label for="" style="margin-top: 10px;font-size: 20px;margin-left: 10px;font-style: italic;font-family: Georgia, 'Times New Roman', Times, serif;">PCT Project--> Check Scan Mat</label>
+
+    </div>
+
+    <div class="div2">
+
+        <input type="button" class="btn btn-info" value="Home" style="margin-top: 5px;margin-left:10px">
+        <input type="button" class="btn btn-secondary" value="FPC System" style="margin-top: 5px;margin-left:10px">
+        <input type="button" class="btn btn-light" value="Old PCAP System" style="margin-top: 5px;margin-left:10px">
+        <input type="button" class="btn btn-dark" value="Utility" style="margin-top: 5px;margin-left:10px">
+
+    </div>
+
+    <div class="div3">
+
+        <div>
+            <label for="" class="a"><b>Lot :</b></label>
+            <input type="text">
+        </div>
+
+        <div>
+            <label for="" style="margin-left: 10px;margin-top: 10px;"> <b> Process : </b></label>
+            <select name="" id="" style="width: 150px;height: 30px;">
+                <option value="">KCUT</option>
+            </select>
+
+            <input type="button" class="btn btn-primary" value="Search" style="margin-left: 10px;height: 35px;margin-bottom: 5px;">
+            <input type="button" class="btn btn-danger" value="Clear" style="margin-left: 10px;height: 35px;margin-bottom: 5px;">
+
+        </div>
+
+    </div>
+
+    <div class="div4">
+
+        <table>
+            <tr>
+
+                <th>Lot no.</th>
+                <th>Item</th>
+                <th>Count</th>
+
+            </tr>
+        </table>
+
+    </div>
+
+
+</body>
+
+</html>

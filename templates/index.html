@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My app 1</title>
+    {% load static %}
+    <!-- คำสั่งที่เรียกใช้ Static ใน python ต้องอยู่ข้างล่าง title เสมอ -->
+</head>
+
+<body>
+    <!-- การเชื่อมลิงค์  css , js -->
+    <link rel="stylesheet" href="{% static 'css/proj7_scrap_control/proj7_page_1_my_content.css' %}">
+    <!-- link องค์ประกอบคือ hrefแอตทริบิวต์ ซึ่งระบุปลายทางของลิงก์ -->
+    <script src="{% static 'js/proj7_scrap_control/proj7_page_1_my_content.js' %}"></script>
+
+    <!-- การเชื่อมลิงค์ Bootstrap => css , js -->
+    <script type="text/javascript" src="{% static 'js/Bootstrap/bootstrap.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/Bootstrap/bootstrap.min.css'%}">
+
+    <h1>My applicatioin 1 Test</h1>
+    <div id="my_content1" class="bg_color">
+        <!-- div คือการสร้างกรอบ , id คือ ระบุรหัสเฉพาะสำหรับองค์ประกอบ HTML ค่าของid แอตทริบิวต์ต้องไม่ซ้ำกันภายในเอกสาร HTML , class ใช้เพื่อชี้ไปที่ชื่อคลาสในสไตล์ชีต JavaScript สามารถใช้เพื่อเข้าถึงและจัดการองค์ประกอบด้วยชื่อคลาสเฉพาะ -->
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. A, exercitationem nam sint voluptas soluta molestiae iste ducimus impedit ea ad repudiandae, illum eveniet! Rerum sunt et nulla dolorem quo dignissimos!
+    </div>
+    <div id="my_content2" class="bg_color">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. A, exercitationem nam sint voluptas soluta molestiae iste ducimus impedit ea ad repudiandae, illum eveniet! Rerum sunt et nulla dolorem quo dignissimos!
+    </div>
+    <button class="btn btn-outline-danger" id="btn_submit_content" onclick=click_mycontent()>Submit</button>
+
+
+
+
+    <div style="border: 1px solid black;height: 400px;margin-bottom: 10px;margin-top: 20px;">
+
+        <div style="background-color:lightgray;height: 100px;">
+            <button class="btn btn-success" style="margin-top:20px;margin: left 50px;">Try if youself</button>
+        </div>
+
+        <div style="background-color:aqua;height:150px;margin-top:auto;">
+            <h6 style="padding-top: 40px;padding-left:10px;"><b>Note</b> : The id name is cast lab</h6>
+            <label for="" style="margin-left: 10px;"><b>Note</b> : Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, minima beatae ea rem atque velit porro ipsa rerum possimus illo qui nulla pariatur numquam totam laudantium dolorum aut vero reprehenderit.</label>
+        </div>
+
+        <div>
+            <h1 style="margin-left: 10px;">Hello World</h1>
+            <p style="margin-left: 10px;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, odit.</p>
+        </div>
+    </div>
+
+</body>
+
+</html>

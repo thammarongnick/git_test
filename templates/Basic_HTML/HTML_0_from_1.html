@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .a {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+    </style>
+
+
+    {% load static %}
+
+    <script src="js_bootstrap/jquery-3.6.0.js"></script>
+
+</head>
+
+<body>
+
+    <!-- การ link ในส่วนของ Js/css -->
+
+    <link rel="stylesheet" href="{% static 'css/proj7_scrap_control/proj7_page_1_my_content.css' %}">
+
+    <script src="{% static 'js/proj7_scrap_control/proj7_page1_my_content.js' %}"></script>
+
+
+
+    <!-- การ link ในส่วนของ Bootstrap => Js/css -->
+
+    <script type="text/javascript" src="{% static 'js/Bootstrap/bootstrap.min.js' %}"></script>
+
+    <link rel="stylesheet" href="{% static 'css/Bootstrap/bootstrap.min.css' %}">
+
+
+    <link rel="stylesheet" href="{% static 'css/Basic_HTML/HTML_0_From_1.css' %}">
+
+    <div style="border: 2px solid black;margin-left:700px;margin-right:700px;background-color: aqua;">
+        <h1 align="center">เเบบฟอร์มลงทะเบียน</h1>
+    </div>
+    <!-- align คือ การจัดตำเเหน่ง -->
+    <form action="">
+        <div>
+            <label for="" class="a">ชื่อจริง : </label>
+            <input type="text" id="first_name" name="fname" placeholder="name">
+        </div>
+        <div>
+            <label for="" class="a">นามสกุล : </label>
+            <input type="text" id="last_name" name="lname" placeholder="นามสกุล">
+        </div>
+        <div>
+            <label for="" class="a">อีเมล์ : </label>
+            <input type="email" id="e_mail">
+        </div>
+        <div>
+            <label for="" class="a">ที่อยู่ : </label>
+            <textarea name="address" id="ad_dress" cols="30" rows="10"></textarea>
+        </div>
+        <div>
+            <label for="" class="a">อายุ : </label>
+            <input type="number" id="Age" name="age" min="0" max="50" value="3">
+        </div>
+        <div>
+            <label for="" class="a">วันเกิด : </label>
+            <input type="date" id="birth_day" name="birthday">
+        </div>
+        <div>
+            <label for="" class="a">เบอร์โทรศัพพท์ : </label>
+            <input type="tel" id="phon_no">
+        </div>
+        <div>
+            <label for="" class="a">สีที่ชอบ : </label>
+            <input type="color" id="like_color">
+        </div>
+        <div>
+            <label for="" class="a">ช่วงตัวเลข : </label>
+            <input type="range" value="0">
+            <input type="range" min="0" max="100" onchange="updateTextInput(this.value)">
+            <input type="text" id="textinput">
+        </div>
+        <div>
+            <label for="" class="a">การศึกษา : </label>
+            <select name="" id="study">
+                <option value="มัธยม">มัธยม</option>
+                <option value="ปริญญาตรี">ปริญญาตรี</option>
+                <option value="ปริญญาโท">ปริญญาโท</option>
+            </select>
+        </div>
+        <div>
+            <label for="" class="a">เพศ : </label>
+            <input type="radio" name="gender" value="เพศชาย">เพศชาย
+            <input type="radio" name="gender" value="เพศหญิง">เพศหญิง
+        </div>
+        <div>
+            <label for="" class="a">สิ่งที่ชอบ : </label>
+            <input type="checkbox" name="check_box" value="เขียนเว็บ"> เขียนเว็บ
+            <input type="checkbox" name="check_box" value="สร้างเกมส์"> สร้างเกมส์
+            <input type="checkbox" name="check_box" value="เล่นเกมส์"> เล่นเกมส์
+        </div>
+        <div>
+            <label for="" class="a">เเนบเอกสาร : </label>
+            <input type="file" id="attach_file">
+        </div>
+        <div>
+            <label for="" class="a">เว็บไซต์ : </label>
+            <input type="url" name="" id="www">
+        </div>
+
+        <div>
+            <!-- <input type="submit" id="submit_data" class="btn btn-primary" value="Save" onclick="submit_data()"> -->
+            <input type="reset" class="btn btn-danger" value="Clear data" style="margin-left: 10px;">
+        </div>
+
+    </form>
+
+    <input type="button" style="margin-top: 10px;margin-left: 10px;" id="" class="btn btn-primary" value="Save" onclick="submit_data()">
+
+    <div>
+        <table style="margin-top: 30px;margin-bottom: 30px;margin-left: 10px;">
+            <thead>
+                <tr>
+                    <th>หัวข้อ</th>
+                    <th>ข้อมูล</th>
+                </tr>
+            </thead>
+            <tbody id="tbody_data1">
+
+            </tbody>
+        </table>
+    </div>
+    <script>
+        function updateTextInput(val) {
+            document.getElementById("textinput").value = val;
+        }
+
+        function submit_data() {
+            let f_name;
+            let l_name;
+            let E_mail;
+            let address;
+            let age;
+            let Birthday;
+            let Phon;
+            let Color;
+            let Number;
+            let Study;
+            let Sex;
+            let Ilike;
+            let AttachFile;
+            let Website;
+
+            f_name = document.getElementById("first_name").value;
+            l_name = document.getElementById("last_name").value;
+            E_mail = document.getElementById("e_mail").value;
+            address = document.getElementById("ad_dress").value;
+            age = document.getElementById("Age").value;
+            Birthday = document.getElementById("birth_day").value;
+            Phon = document.getElementById("phon_no").value;
+            Color = document.getElementById("like_color").value;
+            Number = document.getElementById("textinput").value;
+            Study = document.getElementById("study").value;
+            // Sex = document.getElementById("Gender").value;
+            // Ilike = document.getElementById("I_like").value;
+            AttachFile = document.getElementById("attach_file").value;
+            Website = document.getElementById("www").value;
+
+
+            var radios = document.getElementsByName("gender");
+            for (var i = 0; i < radios.length; i++) {
+                if (radios[i].checked == true) {
+                    Sex = (radios[i].value)
+                }
+            }
+
+            var choices = [];
+            var checkboxes = document.getElementsByName("check_box");
+            for (var i = 0; i < checkboxes.length; i++) {
+                if (checkboxes[i].checked) {
+                    choices.push(checkboxes[i].value)
+                }
+            }
+
+
+            let row1;
+            let row2;
+            let row3;
+            let row4;
+            let row5;
+            let row6;
+            let row7;
+            let row8;
+            let row9;
+            let row10;
+            let row11;
+            let row12;
+            let row13;
+            let row14;
+            let total_row;
+            row1 = '<tr><td>ชื่อ</td><td>' + f_name + '</td></tr>'
+            row2 = '<tr><td>นามสกุล</td><td>' + l_name + '</td></tr>'
+            row3 = '<tr><td>อีเมล์</td><td>' + E_mail + '</td></tr>'
+            row4 = '<tr><td>ที่อยู่</td><td>' + address + '</td></tr>'
+            row5 = '<tr><td>อายุ</td><td>' + age + '</td></tr>'
+            row6 = '<tr><td>วันเกิด</td><td>' + Birthday + '</td></tr>'
+            row7 = '<tr><td>เบอร์โทรศัพพท์</td><td>' + Phon + '</td></tr>'
+            row8 = '<tr><td>สีที่ชอบ</td><td>' + Color + '</td></tr>'
+            row9 = '<tr><td>ช่วงตัวเลข</td><td>' + Number + '</td></tr>'
+            row10 = '<tr><td>การศึกษา</td><td>' + Study + '</td></tr>'
+            row11 = '<tr><td>เพศ</td><td>' + Sex + '</td></tr>'
+            row12 = '<tr><td>สิ่งที่ชอบ</td><td>' + choices + '</td></tr>'
+            row13 = '<tr><td>เเนบไฟล์</td><td>' + AttachFile + '</td></tr>'
+            row14 = '<tr><td>เว็บไซต์</td><td>' + Website + '</td></tr>'
+            total_row = row1 + row2 + row3 + row4 + row5 + row6 + row7 + row8 + row9 + row10 + row11 + row12 + row13 + row14
+            document.getElementById('tbody_data1').innerHTML = total_row;
+        }
+    </script>
+</body>
+
+</html>
