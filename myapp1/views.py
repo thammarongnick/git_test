@@ -1,4 +1,12 @@
 from django.shortcuts import render
+from django.views.decorators.csrf import csrf_exempt
+from django.http import HttpResponse
+from .models import Waste_item_master_list
+import pandas as pd
+from .proj7_functions import save_waste_item_master_list
+import json
+from json import dumps
+
 
 # Create your views here.
 def go_index(request):
@@ -58,4 +66,40 @@ def project_8(request):
 
 def project_modal(request):
     return render(request,'Basic_HTML/HTML_MODAl.html')
+
+#Test Project P'Tukta
+
+#Project Scrap Control
+
+def go_html_record_weight(request):
+    return  render(request,'proj7_scrap_control/proj7_page1_record_weight.html')
+
+@csrf_exempt
+def proj7_read_database_product(request):
+    btn_name_sv = request.POST['btn_name']
+    month_salary = int(request.POST['salary'])
+    print("Test request server : " , btn_name_sv)
+
+    #net_salary_years = 12 * month_salary
+    #print(net_salary_years)
+
+    #Read Excel
+    df_excel = pd.read_excel(r"C:\django_Project\project_smartfactory\static\upload\waste item master list.xlsx")
+    print(df_excel)
+
+    # Read database from dBeaver and Print show
+    db_item_master = pd.DataFrame(list(Waste_item_master_list.objects.all().values()))
+    print(db_item_master)
+
+    #Save data from excel to Database เรียนกใช้ Functions
+    save_waste_item_master_list(df_excel)
+
+    #convert to Json
+    json_records = df_excel.reset_index().to_json(orient='records')
+    data_loads = json.loads(json_records)
+
+    
+    ajax_proj7_read_database_waste_item = dumps(data_loads)
+    return HttpResponse(ajax_proj7_read_database_waste_item)
+
 

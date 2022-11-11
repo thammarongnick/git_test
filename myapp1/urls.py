@@ -21,4 +21,11 @@ urlpatterns = [
     path('project_7',views.project_7),
     path('project_8',views.project_8),
     path('project_modal',views.project_modal),
+
+    # Smart scrap control
+        # Go to Page1
+    path('go_html_record_weight',views.go_html_record_weight),
+
+        # Function for page1
+    path('proj7_read_database_product',views.proj7_read_database_product)
 ]

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        th,
+        td {
+            border: 1px solid black;
+        }
+    </style>
+    {% load static %}
+    <script src="{% static 'js/Bootstrap/jquery-3.6.0.js' %}"></script>
+</head>
+
+<body>
+    <!-- การ link ในส่วนของ Bootstrap => Js/css -->
+    <script type="text/javascript" src="{% static 'js/Bootstrap/bootstrap.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/Bootstrap/bootstrap.min.css' %}">
+
+    <!-- --------------------------------------------------------------------------------------------- -->
+    <script type="text/javascript" src="{% static 'js/proj7_scrap_control/proj7_page1_record_weight.js' %}"></script>
+    <!-- <link rel="stylesheet" href="{% static 'css/proj7_scrap_control/proj7_page1_record_weight.css' %}"> -->
+
+    <button id="btn_read_database_product">Read Database</button>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Item code</th>
+                    <th>Description English</th>
+                    <th>Description Thai</th>
+                    <th>Waste Group code</th>
+                </tr>
+            </thead>
+            <tbody id="tb_waste_item_master_list">
+
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
