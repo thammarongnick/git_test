@@ -67,6 +67,12 @@ def project_8(request):
 def project_modal(request):
     return render(request,'Basic_HTML/HTML_MODAl.html')
 
+def BLOCK_INLINE(request):
+    return render(request,'Basic_HTML/HTML_BLOCK_INLINE.html')
+
+def POSITION(request):
+    return render(request,'Basic_HTML/HTML_POSITION.html')
+
 #Test Project P'Tukta
 
 #Project Scrap Control

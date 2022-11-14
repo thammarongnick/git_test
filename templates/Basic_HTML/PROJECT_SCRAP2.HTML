@@ -12,8 +12,8 @@
             border: 1px solid white;
             border-radius: 5px;
             height: 100px;
-            background-color: blue;
-            color: white;
+            background-color: lightblue;
+            color: brown;
             width: 1920px;
         }
         
@@ -36,6 +36,24 @@
             font-weight: bold;
             margin-left: 20px;
         }
+        
+        table {
+            margin-top: 20px;
+            margin-left: 20px;
+        }
+        
+        th {
+            border: 1px solid black;
+            width: 580px;
+            text-align: center;
+            background-color: cadetblue;
+        }
+        
+        tr,
+        td {
+            border: 1px solid black;
+            text-align: center;
+        }
     </style>
 </head>
 
@@ -56,15 +74,16 @@
     <div class="div2" id="waste_group_code">
 
         <label for="" class="waste_group_code">Waste group code :</label>
-        <input type="text" style="width: 250px ;border: 2px solid black;margin-left: 5px;border-radius: 5px;height: 30px;">
+        <input type="text" id="Waste_group" style="width: 250px ;border: 2px solid black;margin-left: 5px;border-radius: 5px;height: 30px;">
 
         <label for="" class="group_name">Group name :</label>
-        <input type="text" style="width: 300px ;border: 2px solid black;margin-left: 5px;border-radius: 5px;height: 30px;">
+        <input type="text" id="Group_name" style="width: 300px ;border: 2px solid black;margin-left: 5px;border-radius: 5px;height: 30px;">
 
-        <input type="button" class="btn btn-success" value="SAVE" style="margin-left: 5px;margin-bottom: 5px;">
-        <input type="button" class="btn btn-secondary" value="CANCEL" style="margin-left:5px;margin-bottom: 5px;">
-        <input type="button" class="btn btn-warning" value="UPLOAD" style="margin-left:5px;margin-bottom: 5px;">
+        <input type="button" class="btn btn-success" value="SAVE" onclick="submit_data()" style="margin-left: 5px;margin-bottom: 5px;">
+        <input type="reset" class="btn btn-danger" value="Clear data" style="margin-left:5px;margin-bottom: 5px;">
+        <input type="button" class="btn btn-primary" value="UPLOAD" style="margin-left:5px;margin-bottom: 5px;">
     </div>
+
 </body>
 
 </html>

@@ -24,6 +24,8 @@ urlpatterns = [
     path('project_scrap',views.project_scrap),
     path('project_scrap2',views.project_scrap2),
     path('project_scrap3',views.project_scrap3),
+    path('BLOCK_INLINE',views.BLOCK_INLINE),
+    path('POSITION',views.POSITION),
 
     # Smart scrap control
         # Go to Page1
