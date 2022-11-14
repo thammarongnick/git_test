@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <style>
+        .div1 {
+            border: 1px solid white;
+            border-radius: 5px;
+            height: 100px;
+            background-color: blue;
+            color: white;
+            width: 1920px;
+        }
+        
+        .div2 {
+            width: 1920px;
+        }
+        
+        .div3 {
+            width: 1920px;
+        }
+        
+        .div4 {
+            width: 1920px;
+        }
+        
+        #waste_item_code {
+            margin-top: 20px;
+            margin-left: 20px;
+        }
+        
+        .waste_item_code {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        .Price {
+            font-size: 20px;
+            font-weight: bold;
+            margin-left: 25px;
+        }
+        
+        #effective_date_from {
+            margin-top: 20px;
+        }
+        
+        .effective_date_from {
+            font-size: 20px;
+            font-weight: bold;
+            margin-left: 20px;
+        }
+        
+        .Unit_Price {
+            font-size: 20px;
+            font-weight: bold;
+            margin-left: 25px;
+        }
+        
+        #effective_date_to {
+            margin-top: 20px;
+            margin-left: 20px;
+        }
+        
+        .effective_date_to {
+            font-size: 20px;
+            font-weight: bold;
+            margin-left: 25px;
+        }
+        
+        .Company_code {
+            font-size: 20px;
+            font-weight: bold;
+            margin-left: 25px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- การเชื่อมลิงค์  css , js -->
+    <link rel="stylesheet" href="{% static 'css/proj7_scrap_control/proj7_page_1_my_content.css' %}">
+    <!-- link องค์ประกอบคือ hrefแอตทริบิวต์ ซึ่งระบุปลายทางของลิงก์ -->
+    <script src="{% static 'js/proj7_scrap_control/proj7_page_1_my_content.js' %}"></script>
+
+    <!-- การเชื่อมลิงค์ Bootstrap => css , js -->
+    <script type="text/javascript" src="{% static 'js/Bootstrap/bootstrap.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/Bootstrap/bootstrap.min.css'%}">
+
+    <div class="div1">
+        <label for="" style="margin-left: 20px;margin-top: 15px;font-size: 40px;font-weight: bold;">Waste item prices list</label>
+    </div>
+
+    <div class="div2" id="waste_item_code">
+
+        <label for="" class="waste_item_code">Waste item code :</label>
+        <input type="text" style="width: 245px ;border: 2px solid black;margin-left: 5px;border-radius: 5px;height: 30px;">
+
+        <label for="" class="Price">Price :</label>
+        <input type="text" style="width: 295px ;border: 2px solid black;margin-left: 5px;border-radius: 5px;height: 30px;">
+
+    </div>
+
+    <div class="div3" id="effective_date_from">
+
+        <label for="" class="effective_date_from">Effective date from :</label>
+        <input type="date" style="width: 220px ;border: 2px solid black;margin-left: 5px;border-radius: 5px;height: 30px;text-align: center;">
+
+        <label for="" class="Unit_Price">Unit Price :</label>
+        <input type="text" style="width: 250px ;border: 2px solid black;margin-left: 5px;border-radius: 5px;height: 30px;">
+
+    </div>
+
+    <div class="div4" id="effective_date_to">
+
+        <label for="" class="effective_date_to">Effective date to :</label>
+        <input type="date" style="width: 220px ;border: 2px solid black;margin-left: 5px;border-radius: 5px;height: 30px;text-align: center;">
+
+        <label for="" class="Company_code">Company code :</label>
+
+        <select style="width: 205px ;border: 2px solid black;margin-left: 5px;border-radius: 5px;height: 30px;text-align: center;">
+            <option value="THAI SUNGKYO">1003748</option>
+            <option value="THAI SUNGKYO">1003760</option>
+            <option value="NETSUWAN RECYCLE AND SERVICE">1003759</option>
+            <option value="WARINTORN">1003105</option>
+            <option value="YEN SIRI">1003816</option>
+            <option value="U-MACHINE">1003814</option>
+            <option value="MATSUDA">1001005</option>
+            <option value="METECH">1003329</option>
+        </select>
+
+        <input type="button" class="btn btn-success" value="SAVE" style="margin-left: 5px;margin-bottom: 5px;">
+        <input type="button" class="btn btn-secondary" value="CANCEL" style="margin-left:5px;margin-bottom: 5px;">
+        <input type="button" class="btn btn-warning" value="UPLOAD" style="margin-left:5px;margin-bottom: 5px;">
+
+    </div>
+</body>
+
+</html>

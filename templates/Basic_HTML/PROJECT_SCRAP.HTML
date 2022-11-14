@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <style>
+        .div1 {
+            border: 1px solid white;
+            border-radius: 5px;
+            height: 100px;
+            background-color: blue;
+            color: white;
+            width: 1920px;
+        }
+        
+        .div2 {
+            width: 1920px;
+        }
+        
+        .div3 {
+            width: 1920px;
+        }
+        
+        #waste_item_code {
+            margin-top: 20px;
+            margin-left: 20px;
+        }
+        
+        .waste_item_code {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        .Desciption_EN {
+            font-size: 20px;
+            font-weight: bold;
+            margin-left: 20px;
+        }
+        
+        .waste_group_code {
+            font-size: 20px;
+            font-weight: bold;
+            margin-left: 20px;
+            margin-top: 15px;
+        }
+        
+        .Desciption_TH {
+            font-size: 20px;
+            font-weight: bold;
+            margin-left: 20px;
+        }
+        
+        .div4 {
+            width: 1920px;
+        }
+        
+        #waste_unit {
+            margin-top: 20px;
+            margin-left: 20px;
+        }
+        
+        .waste_unit {
+            font-size: 20px;
+            font-weight: bold;
+            margin-left: 70px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- การเชื่อมลิงค์  css , js -->
+    <link rel="stylesheet" href="{% static 'css/proj7_scrap_control/proj7_page_1_my_content.css' %}">
+    <!-- link องค์ประกอบคือ hrefแอตทริบิวต์ ซึ่งระบุปลายทางของลิงก์ -->
+    <script src="{% static 'js/proj7_scrap_control/proj7_page_1_my_content.js' %}"></script>
+
+    <!-- การเชื่อมลิงค์ Bootstrap => css , js -->
+    <script type="text/javascript" src="{% static 'js/Bootstrap/bootstrap.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/Bootstrap/bootstrap.min.css'%}">
+
+    <div class="div1">
+        <label for="" style="margin-left: 20px;margin-top: 15px;font-size: 40px;font-weight: bold;">Waste item master list</label>
+
+    </div>
+
+    <div class="div2" id="waste_item_code">
+
+        <label for="" class="waste_item_code">Waste item code :</label>
+        <input type="text" style="width: 300px ;border: 2px solid black;margin-left: 15px;border-radius: 5px;height: 30px;">
+
+        <label for="" class="Desciption_EN">Desciption (EN) :</label>
+        <input type="text" style="width: 300px;border: 2px solid black;border-radius: 5px;">
+
+    </div>
+
+    <div class="div3" id="waste_group_code">
+
+        <label for="" class="waste_group_code">Waste group code :</label>
+        <input type="text" style="width: 300px;border: 2px solid black;border-radius: 5px;">
+
+        <label for="" class="Desciption_TH">Desciption (TH) :</label>
+        <input type="text" style="width: 300px ;border: 2px solid black;border-radius: 5px;">
+
+    </div>
+
+    <div class="div4" id="waste_unit">
+
+        <label for="" class="waste_unit">Waste unit :</label>
+        <input type="text" style="width: 300px;border: 2px solid black;border-radius: 5px;">
+
+        <input type="button" class="btn btn-success" value="SAVE" style="margin-left: 183px;">
+        <input type="button" class="btn btn-secondary" value="CANCEL" style="margin-left:10px;">
+        <input type="button" class="btn btn-warning" value="UPLOAD" style="margin-left:10px;">
+
+    </div>
+
+
+</body>
+
+</html>

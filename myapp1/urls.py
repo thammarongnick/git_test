@@ -21,6 +21,9 @@ urlpatterns = [
     path('project_7',views.project_7),
     path('project_8',views.project_8),
     path('project_modal',views.project_modal),
+    path('project_scrap',views.project_scrap),
+    path('project_scrap2',views.project_scrap2),
+    path('project_scrap3',views.project_scrap3),
 
     # Smart scrap control
         # Go to Page1
@@ -28,4 +31,7 @@ urlpatterns = [
 
         # Function for page1
     path('proj7_read_database_product',views.proj7_read_database_product)
+
+    
 ]
+

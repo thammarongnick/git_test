@@ -1,6 +1,7 @@
 from .models import Waste_item_master_list
 from datetime import datetime
 
+#function SAVE DATABASE > save_waste_item_master_list
 def save_waste_item_master_list(df_excel):
     datetime_save = datetime.now()
     date_save = datetime_save.date()
@@ -25,5 +26,33 @@ def save_waste_item_master_list(df_excel):
         db_save.update_by = "Thammariong.T"
         db_save.save()
         print("Save completed" , item_code , desc_en , datetimesave)
+
+#function SAVE DATABASE > update_waste_item_master_list
+
+def update_waste_item_master_list(df_update):
+    datetime_save = datetime.now()
+    date_save = datetime_save.date()
+    time_save = datetime_save.time()
+    datesave = date_save.strftime("%d/%m/%y")
+    timesave = time_save.strftime("%H:%M")
+    datetimesave = str(datesave) + " " + str(timesave)
+
+    for i in df_update.itertuples(index=False):
+        item_code = i.waste_item_code
+        desc_en = i.description_EN_x
+        desc_th = i.description_TH_x
+        group_code = i.waste_group_code_x
+        print("Test update")
+        Waste_item_master_list.objects.filter(waste_item_code=item_code).update(
+            description_EN = desc_en,
+           description_TH = desc_th,
+           waste_group_code = group_code,
+           update_date = datetimesave,
+           update_by = "Thammarong.T"
+        )
+
+
+
+
 
 
