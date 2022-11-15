@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Over Flow</title>
+    <style>
+        #box-1 {
+            width: 200px;
+            height: 100px;
+            border: 3px dotted red;
+            overflow: visible;
+            /* เมื่อมีเนื้อหาล้นออกมาก็ให้เเสดงเหมือนเดิม */
+        }
+        
+        #box-2 {
+            margin-top: 250px;
+            width: 200px;
+            height: 100px;
+            border: 3px dotted red;
+            overflow: scroll;
+            /* ทำให้มี scrool bar เลื่อนดูได้ */
+        }
+        
+        #box-3 {
+            margin-top: 250px;
+            margin-bottom: 200px;
+            width: 200px;
+            height: 100px;
+            border: 3px dotted red;
+            overflow: hidden;
+            /* ถ้าเกินกรอบ ให้ตัดทิ้งเลย */
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="box-1">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. In odio eius mollitia maiores animi dolores cupiditate laboriosam aliquid id nobis ea, iure pariatur ipsum impedit porro excepturi esse magni numquam exercitationem dolore sint. Sunt tempora, maxime
+        eveniet, ea laudantium ad inventore corporis repellat doloribus nostrum perferendis autem ducimus recusandae dignissimos!
+    </div>
+
+    <div id="box-2">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. In odio eius mollitia maiores animi dolores cupiditate laboriosam aliquid id nobis ea, iure pariatur ipsum impedit porro excepturi esse magni numquam exercitationem dolore sint. Sunt tempora, maxime
+        eveniet, ea laudantium ad inventore corporis repellat doloribus nostrum perferendis autem ducimus recusandae dignissimos!
+    </div>
+
+    <div id="box-3">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. In odio eius mollitia maiores animi dolores cupiditate laboriosam aliquid id nobis ea, iure pariatur ipsum impedit porro excepturi esse magni numquam exercitationem dolore sint. Sunt tempora, maxime
+        eveniet, ea laudantium ad inventore corporis repellat doloribus nostrum perferendis autem ducimus recusandae dignissimos!
+    </div>
+
+</body>
+
+</html>

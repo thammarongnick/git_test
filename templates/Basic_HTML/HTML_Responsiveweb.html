@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: gray;
+            color: white;
+            text-align: center;
+            padding: 100px;
+        }
+        
+        h1 {
+            display: none;
+        }
+        /* smart phon */
+        
+        @media only screen and (max-width:500px) {
+            body {
+                background-color: red;
+            }
+            #smartphon h1 {
+                display: block;
+            }
+        }
+        /* tablet */
+        
+        @media (min-width:50px) and (max-width:768px) {
+            body {
+                background-color: blue;
+            }
+            #tablet h1 {
+                display: block;
+            }
+        }
+        /* Laptop,Destop */
+        
+        @media (min-width:501px) and (max-width:1200) {
+            body {
+                background-color: green;
+            }
+            #normal h1 {
+                display: block;
+            }
+        }
+        /* TV */
+        
+        @media (min-width:1201px) {
+            body {
+                background-color: black;
+            }
+            #widscreen h1 {
+                display: block;
+            }
+        }
+        /* Lanscape */
+        
+        @media (max-height:500px) and (max-width:768px) {
+            body {
+                background-color: orange;
+            }
+            #lanscape h1 {
+                display: block;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="smartphon">
+        <h1>Smart Phon</h1>
+    </div>
+    <div id="tablet">
+        <h1>Tablet</h1>
+    </div>
+    <div id="normal">
+        <h1>Labtop</h1>
+    </div>
+    <div id="widscreen">
+        <h1>TV</h1>
+    </div>
+    <div id="lanscape">
+        <h1>Lanscape</h1>
+    </div>
+</body>
+
+</html>

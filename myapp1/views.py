@@ -49,6 +49,21 @@ def BLOCK_INLINE(request):
 def POSITION(request):
     return render(request,'Basic_HTML/HTML_POSITION.html')
 
+def Over_flow(request):
+    return render(request,'Basic_HTML/HTML_Overflow.html')
+
+def Box_window(request):
+    return render(request,'Basic_HTML/HTML_box_windows.html')
+
+def Flex_block(request):
+    return render(request,'Basic_HTML/HTML_Flex_block.html')
+
+def over_flow(request):
+    return render(request,'Basic_HTML/HTML_Overflow.html')
+
+def responsive_web(request):
+    return render(request,'Basic_HTML/HTML_Responsiveweb.html')
+
 
 #Project P'Tukta
 def project_1(request):
@@ -75,6 +90,20 @@ def project_7(request):
 def project_8(request):
     return render(request,'Basic_HTML/PROJECT_8.html')
 #Test Project P'Tukta
+
+#Project Scrap Control font N
+
+def project_scrap(request):
+    return render(request,'Basic_HTML/PROJECT_SCRAP.HTML')
+
+def project_scrap2(request):
+    return render(request,'Basic_HTML/PROJECT_SCRAP2.HTML')
+
+def project_scrap3(request):
+    return render(request,'Basic_HTML/PROJECT_SCRAP3.HTML')
+
+def Upload_database(request):
+    return render(request,'Basic_HTML/Upload_database_smart_scrap.html')
 
 
 #Project Scrap Control
@@ -141,20 +170,4 @@ def proj_page1_delete_waste_item_master(request):
     Waste_item_master_list.objects.filter(waste_item_code=waste_item_delete).delete()
     ajax_proj_page1_delete_waste_item_master = waste_item_delete
     return HttpResponse(ajax_proj_page1_delete_waste_item_master)
-
-
-
-#Project Scrap Control font N
-
-def project_scrap(request):
-    return render(request,'Basic_HTML/PROJECT_SCRAP.HTML')
-
-def project_scrap2(request):
-    return render(request,'Basic_HTML/PROJECT_SCRAP2.HTML')
-
-def project_scrap3(request):
-    return render(request,'Basic_HTML/PROJECT_SCRAP3.HTML')
-
-def Upload_database(request):
-    return render(request,'Basic_HTML/Upload_database_smart_scrap.html')
 

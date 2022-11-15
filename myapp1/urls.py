@@ -16,6 +16,12 @@ urlpatterns = [
     path('BLOCK_INLINE',views.BLOCK_INLINE),
     path('POSITION',views.POSITION),
     path('project_modal',views.project_modal),
+    path('Over_flow',views.Over_flow),
+    path('Box_window',views.Box_window),
+    path('Flex_block',views.Flex_block),
+    path('over_flow',views.over_flow),
+    path('responsive_web',views.responsive_web),
+
     #Projec P'Tukta
     path('project_1',views.project_1),
     path('project_2',views.project_2),
