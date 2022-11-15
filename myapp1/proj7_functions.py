@@ -1,7 +1,7 @@
-from .models import Waste_item_master_list
+from .models import Waste_item_master_list , Company_contact_name_list
 from datetime import datetime
 
-#function SAVE DATABASE > save_waste_item_master_list
+#Function save database > save_waste_item_master_list
 def save_waste_item_master_list(df_excel):
     datetime_save = datetime.now()
     date_save = datetime_save.date()
@@ -23,12 +23,11 @@ def save_waste_item_master_list(df_excel):
         db_save.description_TH = desc_th
         db_save.waste_group_code = group_code
         db_save.update_date = datetimesave
-        db_save.update_by = "Thammariong.T"
+        db_save.update_by = "Anupab.K"
         db_save.save()
         print("Save completed" , item_code , desc_en , datetimesave)
 
-#function SAVE DATABASE > update_waste_item_master_list
-
+#Function update database > update_waste_item_master_list
 def update_waste_item_master_list(df_update):
     datetime_save = datetime.now()
     date_save = datetime_save.date()
@@ -42,17 +41,11 @@ def update_waste_item_master_list(df_update):
         desc_en = i.description_EN_x
         desc_th = i.description_TH_x
         group_code = i.waste_group_code_x
-        print("Test update")
+        # print("Test update")
         Waste_item_master_list.objects.filter(waste_item_code=item_code).update(
             description_EN = desc_en,
-           description_TH = desc_th,
-           waste_group_code = group_code,
-           update_date = datetimesave,
-           update_by = "Thammarong.T"
+            description_TH = desc_th,
+            waste_group_code = group_code,
+            update_date = datetimesave,
+            update_by = "Anupab.K"
         )
-
-
-
-
-
-

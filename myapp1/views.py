@@ -9,6 +9,7 @@ from json import dumps
 
 
 # Create your views here.
+# เรียน Html
 def go_index(request):
     return render(request,'index.html')
 
@@ -20,7 +21,6 @@ def go_class(request):
 
 def go_symbol(request):
     return render(request,'Basic_HTML/HTML_Symbol.html')
-
 
 def go_Absolute(request):
     return render(request,'Basic_HTML/HTML_Absolute.html')
@@ -40,6 +40,17 @@ def go_universal(request):
 def go_Width_Height(request):
     return render(request,'Basic_HTML/HTML_ฺWidth_Height.html')
 
+def project_modal(request):
+    return render(request,'Basic_HTML/HTML_MODAl.html')
+
+def BLOCK_INLINE(request):
+    return render(request,'Basic_HTML/HTML_BLOCK_INLINE.html')
+
+def POSITION(request):
+    return render(request,'Basic_HTML/HTML_POSITION.html')
+
+
+#Project P'Tukta
 def project_1(request):
     return render(request,'Basic_HTML/PROJECT_1.html')
 
@@ -63,17 +74,8 @@ def project_7(request):
 
 def project_8(request):
     return render(request,'Basic_HTML/PROJECT_8.html')
-
-def project_modal(request):
-    return render(request,'Basic_HTML/HTML_MODAl.html')
-
-def BLOCK_INLINE(request):
-    return render(request,'Basic_HTML/HTML_BLOCK_INLINE.html')
-
-def POSITION(request):
-    return render(request,'Basic_HTML/HTML_POSITION.html')
-
 #Test Project P'Tukta
+
 
 #Project Scrap Control
 
@@ -91,14 +93,16 @@ def proj7_read_database_product(request):
 
     #Read Excel
     df_excel = pd.read_excel(r"C:\django_Project\project_smartfactory\static\upload\waste item master list.xlsx")
-    print(df_excel)
+    # print(df_excel)
 
     # Read database from dBeaver and Print show
-    db_item_master = pd.DataFrame(list(Waste_item_master_list.objects.all().values()))
-    check_db = Waste_item_master_list.objects.all().exists() #จะได้ค่า True/False เท่านั้น
+
+    #check exists database ตรวจสอบข้อมูลที่มีอยู่ใน Database วิธีที่ 1
+    check_db = Waste_item_master_list.objects.all().exists() #จะได้ค่า true/false เท่านั้น
+    print(check_db)
     if check_db == False:
         save_waste_item_master_list(df_excel)
-        json_records = df_excel.reset_index().to_json(orient='records')
+        json_records = db_item_master.reset_index().to_json(orient='records')
         data_loads = json.loads(json_records)
         ajax_proj7_read_database_waste_item = dumps(data_loads)
         return HttpResponse(ajax_proj7_read_database_waste_item)
@@ -109,38 +113,35 @@ def proj7_read_database_product(request):
         print(db_item_master.columns)
         
 
-
         df_merge_data = pd.merge(df_excel,db_item_master,how="left",on=["waste_item_code"])
         print(df_merge_data.columns)
-        df_merge_data.fillna("NO",inplace=True)
+        df_merge_data.fillna("NO",inplace=True) #แทนค่าจาก Nan > NO
         print(df_merge_data[["waste_item_code" , "exists_data"]])
         df_merge_data_save = df_merge_data[df_merge_data['exists_data']=="NO"] #Data ที่มีการเพิ่มเข้ามาใหม่
-        df_merge_data_save = df_merge_data[df_merge_data['exists_data']=="YES"] #Data ที่มีอยู่เเล้ว เเละ มีการ Update
+        df_merge_data_update = df_merge_data[df_merge_data['exists_data']=="YES"] #Data ที่มีอยู่แล้ว และมีการ Update
         print(df_merge_data_save)
-        if len(df_merge_data_update) > 0 :
-            #เปลี่ยนชื่อ Field ทีทำการ merge ไว้ ให้กลับมาเป็นชื่อเดิม
-            df_merge_data_save.rename({"description_EN_x":"description_EN" , "description_TH_x":"description_TH" , "waste_group_code_x":"waste_group_code"},axis=1,inplace=True)
+        if len(df_merge_data_save) > 0 :
+            #เปลี่ยนชื่อ Field ที่ทำการ Merge ไว้ ให้กลับมาเป็นชื่อเดิม
+            df_merge_data_save.rename({"description_EN_x":"description_EN" , "description_TH_x":"description_TH" , "waste_group_code_x":"waste_group_code" },axis=1 , inplace=True)
             save_waste_item_master_list(df_merge_data_save)
-            #print("df_merge_data_save")
+            # print("df_merge_data_save")
         if len(df_merge_data_update) > 0 :
-            print(df_merge_data_update)
+            print(df_merge_data_update.columns)
             update_waste_item_master_list(df_merge_data_update)
+            #convert to Json
+            json_records = db_item_master.reset_index().to_json(orient='records')
+            data_loads = json.loads(json_records)
+            ajax_proj7_read_database_waste_item = dumps(data_loads)
+            return HttpResponse(ajax_proj7_read_database_waste_item)
 
+@csrf_exempt
+def proj_page1_delete_waste_item_master(request):
+    waste_item_delete = request.POST['item_delete']
+    print(waste_item_delete)
+    Waste_item_master_list.objects.filter(waste_item_code=waste_item_delete).delete()
+    ajax_proj_page1_delete_waste_item_master = waste_item_delete
+    return HttpResponse(ajax_proj_page1_delete_waste_item_master)
 
-   
-
-    #print(db_item_master)
-
-    #Save data from excel to Database เรียนกใช้ Functions
-    #save_waste_item_master_list(df_excel)
-
-    #convert to Json
-    json_records = df_excel.reset_index().to_json(orient='records')
-    data_loads = json.loads(json_records)
-
-    
-    ajax_proj7_read_database_waste_item = dumps(data_loads)
-    return HttpResponse(ajax_proj7_read_database_waste_item)
 
 
 #Project Scrap Control font N
@@ -153,3 +154,7 @@ def project_scrap2(request):
 
 def project_scrap3(request):
     return render(request,'Basic_HTML/PROJECT_SCRAP3.HTML')
+
+def Upload_database(request):
+    return render(request,'Basic_HTML/Upload_database_smart_scrap.html')
+

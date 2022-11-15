@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Database</title>
+    {% load static %}
+
+    <style>
+        .div1 {
+            border: 1px solid white;
+            height: 100px;
+            width: 1920px;
+            background-color: orangered;
+            border-radius: 5px;
+        }
+        
+        .Upload_database {
+            font-size: 30px;
+            font-style: inherit;
+            font-weight: bold;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            color: white;
+            margin-top: 25px;
+            margin-left: 20px;
+        }
+        
+        table,
+        th {
+            border: 1px solid black;
+            border-collapse: collapse;
+            margin-top: 10px;
+            margin-left: 5px;
+            width: 1910px;
+            height: 40px;
+            font-size: 20px;
+            text-align: center;
+            background-color: coral;
+        }
+        
+        .tr_1 {
+            height: auto;
+        }
+        
+        .tr_2 {
+            height: 50px;
+        }
+        
+        .th2 {
+            font-size: 15px;
+            background-color: white;
+        }
+        
+        #btn {
+            width: 300px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- การเชื่อมลิงค์  css , js -->
+    <link rel="stylesheet" href="{% static 'css/proj7_scrap_control/proj7_page_1_my_content.css' %}">
+    <!-- link องค์ประกอบคือ hrefแอตทริบิวต์ ซึ่งระบุปลายทางของลิงก์ -->
+    <script src="{% static 'js/proj7_scrap_control/proj7_page_1_my_content.js' %}"></script>
+
+    <!-- การเชื่อมลิงค์ Bootstrap => css , js -->
+    <script type="text/javascript" src="{% static 'js/Bootstrap/bootstrap.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/Bootstrap/bootstrap.min.css'%}">
+
+    <div class="div1">
+
+        <label for="" class="Upload_database">Upload Database Smart Scrap Management</label>
+
+    </div>
+
+    <div>
+        <table>
+            <tr class="tr_1">
+                <th class="th1">Attactfile/Submit Upload</th>
+                <th class="th1">Menu Discription</th>
+                <th class="th1">Remark1</th>
+                <th class="th1">Remark2</th>
+            </tr>
+            <tr class="tr_2">
+                <th class="th2"><input type="file"><input type="button" class="btn btn-primary" value="Upload wates item master list" id="btn"></th>
+                <th class="th2">Upload wates item master list</th>
+                <th class="th2"></th>
+                <th class="th2"></th>
+            </tr>
+
+            <tr class="tr_2">
+                <th class="th2"><input type="file"><input type="button" class="btn btn-primary" value="Upload wates group master list" id="btn"></th>
+                <th class="th2">Upload wates group master list</th>
+                <th class="th2"></th>
+                <th class="th2"></th>
+            </tr>
+
+            <tr class="tr_2">
+                <th class="th2"><input type="file"><input type="button" class="btn btn-primary" value="Upload wates item price list" id="btn"></th>
+                <th class="th2">Upload wates item price list</th>
+                <th class="th2"></th>
+                <th class="th2"></th>
+            </tr>
+
+            <tr class="tr_2">
+                <th class="th2"><input type="file"><input type="button" class="btn btn-success" value="Upload company master list" id="btn"></th>
+                <th class="th2">Upload company master list</th>
+                <th class="th2"></th>
+                <th class="th2"></th>
+            </tr>
+
+            <tr class="tr_2">
+                <th class="th2"><input type="file"><input type="button" class="btn btn-success" value="Upload company master list" id="btn"></th>
+                <th class="th2">Upload company master list</th>
+                <th class="th2"></th>
+                <th class="th2"></th>
+            </tr>
+
+            <tr class="tr_2">
+                <th class="th2"><input type="file"><input type="button" class="btn btn-success" value="Upload company contact name list" id="btn"></th>
+                <th class="th2">Upload company contact name list</th>
+                <th class="th2"></th>
+                <th class="th2"></th>
+            </tr>
+
+        </table>
+    </div>
+
+
+</body>
+
+</html>
