@@ -27,9 +27,9 @@ $(document).ready(function() {
                             '<td>' + value_db.description_EN + '</td>' +
                             '<td>' + value_db.description_TH + '</td>' +
                             '<td>' + value_db.waste_group_code + '</td>' +
+                            '<td>' + value_db.waste_unit + '</td>' +
                             '<td>' + value_db.update_date + '</td>' +
                             '<td>' + value_db.update_by + '</td>' +
-                            '<td>' + value_db.waste_Unit + '</td>' +
                             '</tr>'
                     })
                     $('#tb_waste_item_master_list').html(row);
@@ -47,7 +47,28 @@ $(document).ready(function() {
             },
             success: function(ajax_proj_page1_delete_waste_item_master) {
                 console.log(ajax_proj_page1_delete_waste_item_master);
-                alert("Delete item " + ajax_proj_page1_delete_waste_item_master + " Completed")
+                alert("Delete item " + input_item_delete + " Completed")
+
+                let json_txt = JSON.parse(ajax_proj_page1_delete_waste_item_master)
+                console.log(ajax_proj_page1_delete_waste_item_master);
+                let row_no = 0
+                let row
+                $.each(json_txt, function(key, value_db) {
+                    row_no += 1;
+                    row += '<tr>' +
+                        '<td>' + row_no + '</td>' +
+                        '<td>' + value_db.waste_item_code + '</td>' +
+                        '<td>' + value_db.description_EN + '</td>' +
+                        '<td>' + value_db.description_TH + '</td>' +
+                        '<td>' + value_db.waste_group_code + '</td>' +
+                        '<td>' + value_db.waste_unit + '</td>' +
+                        '<td>' + value_db.update_date + '</td>' +
+                        '<td>' + value_db.update_by + '</td>' +
+                        '</tr>'
+                })
+                $('#tb_waste_item_master_list').html(row);
+                $('#item_delete').val("");
+                $('#item_delete').focus();
             }
         })
     })

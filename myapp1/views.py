@@ -113,24 +113,20 @@ def go_html_record_weight(request):
 
 @csrf_exempt
 def proj7_read_database_product(request):
-    btn_name_sv = request.POST['btn_name']
-    month_salary = int(request.POST['salary'])
-    print("Test request server : " , btn_name_sv)
+    # btn_name_sv = request.POST['btn_name']
+    # month_salary = int(request.POST['salary'])
+    # print("Test request server : " , btn_name_sv)
+    
 
-    #net_salary_years = 12 * month_salary
-    #print(net_salary_years)
-
-    #Read Excel
     df_excel = pd.read_excel(r"C:\django_Project\project_smartfactory\static\upload\waste item master list.xlsx")
-    # print(df_excel)
+    db_item_master = pd.DataFrame(list(Waste_item_master_list.objects.all().values()))
 
-    # Read database from dBeaver and Print show
-
-    #check exists database ตรวจสอบข้อมูลที่มีอยู่ใน Database วิธีที่ 1
     check_db = Waste_item_master_list.objects.all().exists() #จะได้ค่า true/false เท่านั้น
-    print(check_db)
+    print("Check database" , check_db)
     if check_db == False:
         save_waste_item_master_list(df_excel)
+        
+        db_item_master = pd.DataFrame(list(Waste_item_master_list.objects.all().values()))
         json_records = db_item_master.reset_index().to_json(orient='records')
         data_loads = json.loads(json_records)
         ajax_proj7_read_database_waste_item = dumps(data_loads)
@@ -141,7 +137,6 @@ def proj7_read_database_product(request):
         db_item_master["exists_data"] = "YES"
         print(db_item_master.columns)
         
-
         df_merge_data = pd.merge(df_excel,db_item_master,how="left",on=["waste_item_code"])
         print(df_merge_data.columns)
         df_merge_data.fillna("NO",inplace=True) #แทนค่าจาก Nan > NO
@@ -151,23 +146,36 @@ def proj7_read_database_product(request):
         print(df_merge_data_save)
         if len(df_merge_data_save) > 0 :
             #เปลี่ยนชื่อ Field ที่ทำการ Merge ไว้ ให้กลับมาเป็นชื่อเดิม
-            df_merge_data_save.rename({"description_EN_x":"description_EN" , "description_TH_x":"description_TH" , "waste_group_code_x":"waste_group_code" },axis=1 , inplace=True)
+            df_merge_data_save.rename({"description_EN_x":"description_EN" , "description_TH_x":"description_TH" , "waste_group_code_x":"waste_group_code" , "waste_unit_x":"waste_unit" },axis=1 , inplace=True)
             save_waste_item_master_list(df_merge_data_save)
+            
+            db_item_master = pd.DataFrame(list(Waste_item_master_list.objects.all().values()))
+            json_records = db_item_master.reset_index().to_json(orient='records')
+            data_loads = json.loads(json_records)
+            ajax_proj7_read_database_waste_item = dumps(data_loads)
+            return HttpResponse(ajax_proj7_read_database_waste_item)
             # print("df_merge_data_save")
         if len(df_merge_data_update) > 0 :
             print(df_merge_data_update.columns)
             update_waste_item_master_list(df_merge_data_update)
             #convert to Json
+            db_item_master = pd.DataFrame(list(Waste_item_master_list.objects.all().values()))
             json_records = db_item_master.reset_index().to_json(orient='records')
             data_loads = json.loads(json_records)
             ajax_proj7_read_database_waste_item = dumps(data_loads)
             return HttpResponse(ajax_proj7_read_database_waste_item)
 
+
 @csrf_exempt
 def proj_page1_delete_waste_item_master(request):
     waste_item_delete = request.POST['item_delete']
-    print(waste_item_delete)
+    print("Item delete :" , waste_item_delete)
     Waste_item_master_list.objects.filter(waste_item_code=waste_item_delete).delete()
-    ajax_proj_page1_delete_waste_item_master = waste_item_delete
+
+    db_item_master = pd.DataFrame(list(Waste_item_master_list.objects.all().values()))
+    json_records = db_item_master.reset_index().to_json(orient='records')
+    data_loads = json.loads(json_records)
+    ajax_proj_page1_delete_waste_item_master = dumps(data_loads)
     return HttpResponse(ajax_proj_page1_delete_waste_item_master)
+
 

@@ -16,14 +16,16 @@ def save_waste_item_master_list(df_excel):
         desc_en = i.description_EN
         desc_th = i.description_TH
         group_code = i.waste_group_code
+        unit_waste = i.waste_unit
         print(item_code, desc_en, desc_th, group_code)
         db_save = Waste_item_master_list()
         db_save.waste_item_code = item_code
         db_save.description_EN = desc_en
         db_save.description_TH = desc_th
         db_save.waste_group_code = group_code
+        db_save.waste_unit = unit_waste
         db_save.update_date = datetimesave
-        db_save.update_by = "Anupab.K"
+        db_save.update_by = "Thammarong.T"
         db_save.save()
         print("Save completed" , item_code , desc_en , datetimesave)
 
@@ -41,11 +43,13 @@ def update_waste_item_master_list(df_update):
         desc_en = i.description_EN_x
         desc_th = i.description_TH_x
         group_code = i.waste_group_code_x
+        unit_waste = i.waste_unit_x
         # print("Test update")
         Waste_item_master_list.objects.filter(waste_item_code=item_code).update(
             description_EN = desc_en,
             description_TH = desc_th,
             waste_group_code = group_code,
+            waste_unit = unit_waste,
             update_date = datetimesave,
-            update_by = "Anupab.K"
+            update_by = "Thammarong.T"
         )

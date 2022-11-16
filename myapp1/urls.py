@@ -31,6 +31,7 @@ urlpatterns = [
     path('project_6',views.project_6),
     path('project_7',views.project_7),
     path('project_8',views.project_8),
+
     #Project smart scrap
     path('project_scrap',views.project_scrap),
     path('project_scrap2',views.project_scrap2),
@@ -43,6 +44,7 @@ urlpatterns = [
     path('go_html_record_weight',views.go_html_record_weight),
 
         # Function for page1
+        
     path('proj7_read_database_product',views.proj7_read_database_product),
     path('proj_page1_delete_waste_item_master',views.proj_page1_delete_waste_item_master),
 ]
