@@ -89,6 +89,9 @@ def project_7(request):
 
 def project_8(request):
     return render(request,'Basic_HTML/PROJECT_8.html')
+
+def Men_menu(request):
+    return render(request,'Basic_HTML/Main_menu.html')
 #Test Project P'Tukta
 
 #Project Scrap Control font N

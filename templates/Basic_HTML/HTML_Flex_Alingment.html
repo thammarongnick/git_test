@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            /* เป็นการกำหนดขนาดของ width ให้ตรงกับขนาดที่เรากำหนดไว้ ไม่รวม margin,padding */
+        }
+        
+        .item {
+            background-color: orange;
+            border: 1px solid black;
+            width: 200px;
+            margin: 10px;
+            padding: 10px;
+            text-align: center;
+            border-radius: 10px;
+        }
+        
+        .flex-container {
+            display: flex;
+            background-color: aqua;
+            flex-direction: column;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            /* กำหนดให้อยู่จุด start หรือชอดซ้าย */
+        }
+        
+        .flex-container2 {
+            display: flex;
+            background-color: yellowgreen;
+            flex-direction: column;
+            flex-wrap: wrap;
+            align-items: center;
+            /* กำหนดให้อยู่ตรงกลาง */
+        }
+        
+        .flex-container3 {
+            display: flex;
+            background-color: yellow;
+            flex-direction: column;
+            flex-wrap: wrap;
+            align-items: flex-end;
+            /* กำหนดให้อยู่ชิดด้านขวาสุด */
+        }
+        
+        .flex-container4 {
+            display: flex;
+            background-color: aqua;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: stretch;
+            height: 500px;
+            /* กำหนดให้อยู่ในเเนวนอน เเต่อยู่ในรูปแบบยืด */
+        }
+        
+        .flex-container5 {
+            display: flex;
+            background-color: blue;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            height: 500px;
+        }
+        
+        .itemx-1 {
+            align-self: flex-end;
+            /* กำหนดให้อยู่ชิดด้านขวาสุด */
+        }
+        
+        .itemx-2 {
+            align-self: center;
+            /* กำหนดให้อยู่ตรงกลาง */
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="flex-container">
+        <div class="item">
+            <h3>item 1</h3>
+        </div>
+        <div class="item">
+            <h3>item 2</h3>
+        </div>
+        <div class="item">
+            <h3>item 3</h3>
+        </div>
+    </div>
+
+    <div class="flex-container2">
+        <div class="item">
+            <h3>item 1</h3>
+        </div>
+        <div class="item">
+            <h3>item 2</h3>
+        </div>
+        <div class="item">
+            <h3>item 3</h3>
+        </div>
+    </div>
+
+    <div class="flex-container3">
+        <div class="item">
+            <h3>item 1</h3>
+        </div>
+        <div class="item">
+            <h3>item 2</h3>
+        </div>
+        <div class="item">
+            <h3>item 3</h3>
+        </div>
+    </div>
+
+    <div class="flex-container4">
+        <div class="item">
+            <h3>item 1</h3>
+        </div>
+        <div class="item">
+            <h3>item 2</h3>
+        </div>
+        <div class="item">
+            <h3>item 3</h3>
+        </div>
+    </div>
+
+    <div class="flex-container5">
+        <div class="item itemx-1">
+            <h3>item 1</h3>
+        </div>
+        <div class="item itemx-2">
+            <h3>item 2</h3>
+        </div>
+        <div class="item  itemx-3">
+            <h3>item 3</h3>
+        </div>
+    </div>
+</body>
+
+</html>

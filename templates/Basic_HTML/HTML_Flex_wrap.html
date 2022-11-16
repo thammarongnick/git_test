@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            /* เป็นการกำหนดขนาดของ width ให้ตรงกับขนาดที่เรากำหนดไว้ ไม่รวม margin,padding */
+        }
+        
+        .flex-container {
+            display: flex;
+            /* ทำให้เรียงเป็นเเนวนอน */
+            background-color: aqua;
+            flex-direction: row;
+            /* ทำให้อยู่ในทอศทาง row */
+            flex-wrap: wrap;
+            /* ทำให้เวลาเลื่อนเเล้วขยับตาม */
+        }
+        
+        .item {
+            background-color: orange;
+            border: 1px solid black;
+            width: 200px;
+            margin: 10px;
+            padding: 10px;
+            text-align: center;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="flex-container">
+        <div class="item item-1">
+            <h3>item 1</h3>
+        </div>
+        <div class="item item-1">
+            <h3>item 2</h3>
+        </div>
+        <div class="item item-1">
+            <h3>item 3</h3>
+        </div>
+        <div class="item item-1">
+            <h3>item 4</h3>
+        </div>
+        <div class="item item-1">
+            <h3>item 5</h3>
+        </div>
+        <div class="item item-1">
+            <h3>item 6</h3>
+        </div>
+        <div class="item item-1">
+            <h3>item 7</h3>
+        </div>
+        <div class="item item-1">
+            <h3>item 8</h3>
+        </div>
+        <div class="item item-1">
+            <h3>item 9</h3>
+        </div>
+        <div class="item item-1">
+            <h3>item 10</h3>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            /* เป็นการกำหนดขนาดของ width ให้ตรงกับขนาดที่เรากำหนดไว้ ไม่รวม margin,padding */
+        }
+        
+        .flexcontainer {
+            display: flex;
+            background-color: aqua;
+            flex-direction: row;
+        }
+        
+        .item {
+            background-color: orange;
+            width: 200px;
+            margin: 10px;
+            padding: 10px;
+            text-align: center;
+            border-radius: 10px;
+        }
+        
+        .item-2 {
+            flex-basis: 500px;
+            /* กำหนดค่าความยืดหยุ่นเริ่มต้นที่ 500px */
+        }
+        
+        .item-5 {
+            flex-shrink: 2;
+            /* กำหนดค่าความหดตัวเป็น 2 เท่าของเพื่อนรอบๆ */
+        }
+        
+        .item-4 {
+            flex-shrink: 3;
+            /* กำหนดค่าความหดตัวเป็น 2 เท่าของเพื่อนรอบๆ */
+        }
+        
+        .item-6 {
+            flex-flow: 2;
+            /* กำหนดค่าความขยายตัวเป็น 2 เท่าของเพื่อนรอบๆ */
+        }
+        
+        .flexcontainer2 {
+            display: flex;
+            /* ทำให้เรียงเป็นเเนวนอน */
+            background-color: blue;
+            flex-direction: row;
+            /* เรียงเเบบ  1 2 3  */
+        }
+        
+        .item2 {
+            background-color: orange;
+            margin: 10px;
+            padding: 10px;
+            text-align: center;
+            border-radius: 10px;
+            /* เส้นโค้ง */
+            flex: 1;
+            /* ทำให้ item ที่อยู่ในเเถวเดียวกัน มีขนาดเท่ากัน */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="flexcontainer">
+
+        <div class="item item-1">
+            <h3>item 1</h3>
+        </div>
+        <div class="item item-2">
+            <h3>item 2</h3>
+        </div>
+        <div class="item item-3">
+            <h3>item 3</h3>
+        </div>
+        <div class="item item-4">
+            <h3>item 4</h3>
+        </div>
+        <div class="item item-5">
+            <h3>item 5</h3>
+        </div>
+        <div class="item item-6">
+            <h3>item 6</h3>
+        </div>
+
+    </div>
+
+    <div class="flexcontainer2">
+        <div class="item2 item-1">
+            <h3>item 1</h3>
+        </div>
+        <div class="item2 item-2">
+            <h3>item 2</h3>
+        </div>
+        <div class="item2 item-3">
+            <h3>item 3</h3>
+        </div>
+    </div>
+</body>
+
+</html>
