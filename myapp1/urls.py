@@ -23,14 +23,14 @@ urlpatterns = [
     path('responsive_web',views.responsive_web),
 
     #Projec P'Tukta
-    path('project_1',views.project_1),
-    path('project_2',views.project_2),
-    path('project_3',views.project_3),
-    path('project_4',views.project_4),
-    path('project_5',views.project_5),
-    path('project_6',views.project_6),
-    path('project_7',views.project_7),
-    path('project_8',views.project_8),
+    path('Clean_POS',views.Clean_POS),
+    path('Product_Transfer_to_WH',views.Product_Transfer_to_WH),
+    path('Product_standard_lead_time_Report',views.Product_standard_lead_time_Report),
+    path('Item_inventory_data',views.Item_inventory_data),
+    path('Clear_Query_Lot',views.Clear_Query_Lot),
+    path('Cancel_Lot',views.Cancel_Lot),
+    path('Check_Scan_Mat',views.Check_Scan_Mat),
+    path('Test_Formula',views.Test_Formula),
     path('Men_menu',views.Men_menu),
 
     #Project smart scrap

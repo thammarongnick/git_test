@@ -19,7 +19,6 @@
         span {
             background-color: white;
             color: red;
-            font-style: italic;
             font-size: 30px;
             margin-left: 10px;
             font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -28,7 +27,6 @@
         
         .Text_PCTT_Project {
             font-size: 30px;
-            font-style: italic;
             font-weight: bold;
             font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         }
@@ -43,7 +41,19 @@
             font-size: 15px;
             font-weight: bold;
             padding-top: 5px;
-            color: red;
+            color: black;
+        }
+        
+        .box_menu {
+            border: 1px solid black;
+            height: 200px;
+            width: 1920px;
+        }
+        
+        .btn:hover {
+            border: 5px solid lightskyblue;
+            border-radius: 10px;
+            /* ทำให้มีขอบสีขึ้นมาเวลา เลื่อนเคอเซอร์ไปชี้ */
         }
     </style>
 </head>
@@ -66,6 +76,10 @@
 
     <div class="box-2">
         <label for="" class="Text_Master">PCTT PROJECT--> MASTER</label>
+    </div>
+
+    <div class="box_menu">
+        <a href="/Clean_POS"><img class="btn" id="machine_pcap" style="width:200px;height: auto;" src="/static/img/PCTT_PROJECT/Machine PCAP.jpg"></a>
     </div>
 </body>
 

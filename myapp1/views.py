@@ -66,32 +66,32 @@ def responsive_web(request):
 
 
 #Project P'Tukta
-def project_1(request):
-    return render(request,'Basic_HTML/PROJECT_1.html')
+def Clean_POS(request):
+    return render(request,'Basic_HTML/PROJECT_Clean_POS.html')
 
-def project_2(request):
-    return render(request,'Basic_HTML/PROJECT_2.html')
+def Product_Transfer_to_WH(request):
+    return render(request,'Basic_HTML/Product_Transfer_to_WH.html')
 
-def project_3(request):
-    return render(request,'Basic_HTML/PROJECT_3.html')
+def Product_standard_lead_time_Report(request):
+    return render(request,'Basic_HTML/Product_standard_lead_time_Report.html')
 
-def project_4(request):
-    return render(request,'Basic_HTML/PROJECT_4.html')
+def Item_inventory_data(request):
+    return render(request,'Basic_HTML/Item_inventory_data.html')
 
-def project_5(request):
-    return render(request,'Basic_HTML/PROJECT_5.html')
+def Clear_Query_Lot(request):
+    return render(request,'Basic_HTML/Clear_Query_Lot.html')
 
-def project_6(request):
-    return render(request,'Basic_HTML/PROJECT_6.html')
+def Cancel_Lot(request):
+    return render(request,'Basic_HTML/Cancel_Lot.html)
 
-def project_7(request):
-    return render(request,'Basic_HTML/PROJECT_7.html')
+def Check_Scan_Mat(request):
+    return render(request,'Basic_HTML/Check_Scan_Mat.html')
 
-def project_8(request):
-    return render(request,'Basic_HTML/PROJECT_8.html')
+def Test_Formula(request):
+    return render(request,'Basic_HTML/Test_Formula.html')
 
 def Men_menu(request):
-    return render(request,'Basic_HTML/Main_menu.html')
+    return render(request,'Basic_HTML/Main_menu_Test.html')
 #Test Project P'Tukta
 
 #Project Scrap Control font N
