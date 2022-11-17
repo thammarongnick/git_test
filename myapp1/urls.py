@@ -31,12 +31,13 @@ urlpatterns = [
     path('Cancel_Lot',views.Cancel_Lot),
     path('Check_Scan_Mat',views.Check_Scan_Mat),
     path('Test_Formula',views.Test_Formula),
-    path('Men_menu',views.Men_menu),
+    path('Main_menu_Test',views.Main_menu_Test),
 
     #Project smart scrap
-    path('project_scrap',views.project_scrap),
-    path('project_scrap2',views.project_scrap2),
-    path('project_scrap3',views.project_scrap3),
+    path('MAIN_MENU',views.MAIN_MENU),
+    path('Waste_group_master_list',views.Waste_group_master_list),
+    path('Waste_item_master_list',views.Waste_item_master_list),
+    path('Waste_item_prices_list',views.Waste_item_prices_list),
     path('Upload_database',views.Upload_database),
 
 

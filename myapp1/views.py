@@ -82,7 +82,7 @@ def Clear_Query_Lot(request):
     return render(request,'Basic_HTML/Clear_Query_Lot.html')
 
 def Cancel_Lot(request):
-    return render(request,'Basic_HTML/Cancel_Lot.html)
+    return render(request,'Basic_HTML/Cancel_Lot.html')
 
 def Check_Scan_Mat(request):
     return render(request,'Basic_HTML/Check_Scan_Mat.html')
@@ -90,23 +90,26 @@ def Check_Scan_Mat(request):
 def Test_Formula(request):
     return render(request,'Basic_HTML/Test_Formula.html')
 
-def Men_menu(request):
+def Main_menu_Test(request):
     return render(request,'Basic_HTML/Main_menu_Test.html')
 #Test Project P'Tukta
 
 #Project Scrap Control font N
 
-def project_scrap(request):
-    return render(request,'Basic_HTML/PROJECT_SCRAP.HTML')
+def MAIN_MENU(request):
+    return render(request,'PROJECT_SMART_SCRAP/MAIN_MENU.HTML')
 
-def project_scrap2(request):
-    return render(request,'Basic_HTML/PROJECT_SCRAP2.HTML')
+def Waste_group_master_list(request):
+    return render(request,'PROJECT_SMART_SCRAP/Waste_group_master_list.html')
 
-def project_scrap3(request):
-    return render(request,'Basic_HTML/PROJECT_SCRAP3.HTML')
+def Waste_item_master_list(request):
+    return render(request,'PROJECT_SMART_SCRAP/Waste_item_master_list.html')
+
+def Waste_item_prices_list(request):
+    return render(request,'PROJECT_SMART_SCRAP/Waste_item_prices_list.html')
 
 def Upload_database(request):
-    return render(request,'Basic_HTML/Upload_database_smart_scrap.html')
+    return render(request,'PROJECT_SMART_SCRAP/Upload_database_smart_scrap.html')
 
 
 #Project Scrap Control
