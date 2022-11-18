@@ -95,7 +95,6 @@ def Main_menu_Test(request):
 #Test Project P'Tukta
 
 #Project Scrap Control font N
-
 def MAIN_MENU(request):
     return render(request,'PROJECT_SMART_SCRAP/MAIN_MENU.HTML')
 
@@ -111,9 +110,10 @@ def Waste_item_prices_list(request):
 def Upload_database(request):
     return render(request,'PROJECT_SMART_SCRAP/Upload_database_smart_scrap.html')
 
+def Smart_scrap_management(request):
+    return render(request,'PROJECT_SMART_SCRAP/Smart_scrap_management.html')
 
 #Project Scrap Control
-
 def go_html_record_weight(request):
     return  render(request,'proj7_scrap_control/proj7_page1_record_weight.html')
 

@@ -39,6 +39,7 @@ urlpatterns = [
     path('Waste_item_master_list',views.Waste_item_master_list),
     path('Waste_item_prices_list',views.Waste_item_prices_list),
     path('Upload_database',views.Upload_database),
+    path('Smart_scrap_management',views.Smart_scrap_management),
 
 
     # Smart scrap control

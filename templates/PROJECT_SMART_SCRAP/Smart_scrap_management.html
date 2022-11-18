@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Smart Scrap Management</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <style>
+        .box_1 {
+            border: 1px solid white;
+            height: 100px;
+            width: 1920px;
+            background-color: lightblue;
+            text-align: center;
+        }
+        
+        .Text_Smart_scrap_management {
+            font-size: 35px;
+            padding-top: 20px;
+            font-weight: bold;
+            color: black;
+        }
+        
+        .box_2 {
+            border: 1px solid white;
+            height: 60px;
+            width: 1920px;
+        }
+        
+        .name_factory {
+            margin-left: 5px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        .name {
+            margin-left: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        #select_factory {
+            width: 200px;
+            height: 30px;
+            text-align: center;
+            margin-top: 15px;
+            border: 2px solid black;
+            border-radius: 5px;
+        }
+        
+        #select_group {
+            width: 200px;
+            height: 30px;
+            /* text-align: center; */
+            margin-top: 15px;
+            border: 2px solid black;
+            border-radius: 5px;
+        }
+        
+        #select_date {
+            width: 200px;
+            height: 30px;
+            text-align: center;
+            margin-top: 15px;
+            border: 2px solid black;
+            border-radius: 5px;
+        }
+        
+        table,
+        th {
+            border: 1px solid black;
+            border-collapse: collapse;
+            margin-top: 10px;
+            margin-left: 5px;
+            width: 1910px;
+            height: 40px;
+            font-size: 15px;
+            text-align: center;
+            background-color: blue;
+        }
+        
+        .tr_1 {
+            height: auto;
+            color: white;
+        }
+        
+        .th2 {
+            font-size: 15px;
+            background-color: white;
+        }
+        
+        .btn {
+            width: 100px;
+            height: 40px;
+        }
+        
+        .btn:hover {
+            border: 2px solid black;
+            border-radius: 5px;
+        }
+        
+        .tr_2 {
+            height: 50px;
+        }
+        
+        .modal-header {
+            background-color: blue;
+            text-align: center;
+            height: 70px;
+        }
+        
+        .modal-title {
+            color: white;
+            font-weight: bold;
+            font-size: 30px;
+        }
+        
+        .Factory {
+            margin-top: 5px;
+        }
+        
+        .Total_Weight {
+            margin-top: 5px;
+        }
+        
+        .modal_tabel {
+            height: 350px;
+        }
+        
+        #tabel_modal,
+        #th_modal {
+            border: 1px solid black;
+            border-collapse: collapse;
+            background-color: lightgray;
+            width: 530px;
+            margin-left: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box_1">
+
+        <label for="" class="Text_Smart_scrap_management">Smart scrap management</label>
+
+    </div>
+
+    <div class="box_2">
+
+        <label for="" class="name_factory">Factory&nbsp;&nbsp;:&nbsp;&nbsp;</label>
+        <select name="" id="select_factory">
+            <option value="A1">A1</option>
+            <option value="K1">K1</option>
+            <option value="N1">N1</option>
+            <option value="N2">N2</option>
+            <option value="P1">P1</option>
+        </select>
+
+        <label for="" class="name">Group&nbsp;&nbsp;:&nbsp;&nbsp;</label>
+        <select name="" id="select_group">
+
+            <option value="1">Group 1-1 Packaging</option>
+            <option value="2">Group 1-2 Industrial gabage</option>
+            <option value="3">Group 1-3 Other-BOI</option>
+            <option value="4">Group 1-4 Recycle non BOI</option>
+            <option value="5">Group 1-5 Fixed asset</option>
+            <option value="6">Group 1-6 Cushion</option>
+            <option value="7">Group 1-7 Sludge</option>
+            <option value="8">Group 1-8 Used tank</option>
+            <option value="9">Group 1-9 Hard die scrap</option>
+            <option value="10">Group 1-10 Machine scrap</option>
+            <option value="11">Group 1-11 Pump scrap</option>
+            <option value="12">Group 1-12 Dead stock</option>
+
+        </select>
+
+        <label for="" class="name">Date&nbsp;&nbsp;:&nbsp;&nbsp;</label>
+        <input type="date" id="select_date">
+
+    </div>
+
+    <div>
+        <table>
+
+            <tr class="tr_1">
+                <th class="th1">Factory</th>
+                <th class="th1">Group</th>
+                <th class="th1">Date</th>
+                <th class="th1">Item</th>
+                <th class="th1">Total</th>
+                <th class="th1">Details</th>
+                <th class="th1">Upload By</th>
+                <th class="th1">Update Date</th>
+                <th class="th1">Remark</th>
+            </tr>
+
+            <tr class="tr_2">
+                <th class="th2"></th>
+                <th class="th2"></th>
+                <th class="th2"></th>
+                <th class="th2">Item 1&nbsp;&nbsp;:&nbsp;&nbsp;..........&nbsp;&nbsp;<button type="button" class="btn btn-info btn-lg" aria-colspan="btn" data-toggle="modal" data-target="#myModal">Add</button>
+                    <div class="modal fade" id="myModal" role="dialog">
+                        <div class="modal-dialog">
+
+                            <!-- Modal content-->
+                            <div class="modal-content">
+
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Key weight details by item scrap</h4>
+                                </div>
+
+                                <div class="Factory">
+
+                                    <label for="">Factory :</label>
+                                    <input type="text" style="font-size: 16px;width: 100px;text-align: center;">
+
+                                    <label for="">Item :</label>
+                                    <input type="text" style="font-size: 16px;width: 100px;text-align: center;">
+
+                                    <label for="">Date take off :</label>
+                                    <input type="text" style="font-size: 16px;width: 100px;text-align: center;">
+
+                                </div>
+
+                                <div class="Total_Weight">
+
+                                    <label for="">Total Weight :</label>
+                                    <input type="text" style="font-size: 16px;width: 100px;text-align: center;">
+
+                                    <label for="" style="color: red;font-size: 16px;">-->Enter</label>
+
+                                    <input type="button" class="btn btn-success" value="Confrim" style="margin-left: 40px;">
+                                    <input type="button" class="btn btn-danger" value="Cancel" style="margin-left: 10px;">
+                                </div>
+
+                                <div class="modal_tabel">
+
+                                    <table id="tabel_modal">
+                                        <tr id="tr_modal">
+                                            <th id="th_modal">Detail 1 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 8 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 15 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                        </tr>
+                                        <tr id="tr_modal">
+                                            <th id="th_modal">Detail 2 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 9 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 16 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                        </tr>
+                                        <tr id="tr_modal">
+                                            <th id="th_modal">Detail 3 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 10 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 17 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                        </tr>
+                                        <tr id="tr_modal">
+                                            <th id="th_modal">Detail 4 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 11 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 18 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                        </tr>
+                                        <tr id="tr_modal">
+                                            <th id="th_modal">Detail 5 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 12 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 19 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                        </tr>
+                                        <tr id="tr_modal">
+                                            <th id="th_modal">Detail 6 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 13 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 20 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                        </tr>
+                                        <tr id="tr_modal">
+                                            <th id="th_modal">Detail 7 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 14 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+
+                                        </tr>
+                                    </table>
+
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </th>
+                <th class="th2"><input type="text" style="height: 40px;border: 2px solid black;border-radius: 5px;width: 100px;background-color: lightgray;text-align:center"></th>
+                <th class="th2"><input type="text" style="height: 40px;border: 2px solid black;border-radius: 5px;width: 100px;background-color: lightgray;text-align:center"></th>
+                <th class="th2"></th>
+                <th class="th2"></th>
+                <th class="th2"></th>
+            </tr>
+
+            <tr class="tr_2">
+                <th class="th2"></th>
+                <th class="th2"></th>
+                <th class="th2"></th>
+                <th class="th2">Item 2&nbsp;&nbsp;:&nbsp;&nbsp;..........&nbsp;&nbsp;<button type="button" class="btn btn-info btn-lg" aria-colspan="btn" data-toggle="modal" data-target="#myModal">Add</button>
+                    <div class="modal fade" id="myModal" role="dialog">
+                        <div class="modal-dialog">
+
+                            <!-- Modal content-->
+                            <div class="modal-content">
+
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Key weight details by item scrap</h4>
+                                </div>
+
+                                <div class="Factory">
+
+                                    <label for="">Factory :</label>
+                                    <input type="text" style="font-size: 16px;width: 100px;">
+
+                                    <label for="">Item :</label>
+                                    <input type="text" style="font-size: 16px;width: 100px;">
+
+                                    <label for="">Date take off :</label>
+                                    <input type="text" style="font-size: 16px;width: 100px;">
+
+                                </div>
+
+                                <div class="Total_Weight">
+
+                                    <label for="">Total Weight :</label>
+                                    <input type="text" style="font-size: 16px;width: 100px;">
+
+                                    <label for="" style="color: red;font-size: 16px;">-->Enter</label>
+
+                                    <input type="button" class="btn btn-success" value="Confrim" style="margin-left: 40px;">
+                                    <input type="button" class="btn btn-danger" value="Cancel" style="margin-left: 10px;">
+                                </div>
+
+                                <div class="modal_tabel">
+
+                                    <table id="tabel_modal">
+                                        <tr id="tr_modal">
+                                            <th id="th_modal">Detail 1 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 8 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 15 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                        </tr>
+                                        <tr id="tr_modal">
+                                            <th id="th_modal">Detail 2 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 9 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 16 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                        </tr>
+                                        <tr id="tr_modal">
+                                            <th id="th_modal">Detail 3 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 10 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 17 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                        </tr>
+                                        <tr id="tr_modal">
+                                            <th id="th_modal">Detail 4 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 11 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 18 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                        </tr>
+                                        <tr id="tr_modal">
+                                            <th id="th_modal">Detail 5 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 12 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 19 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                        </tr>
+                                        <tr id="tr_modal">
+                                            <th id="th_modal">Detail 6 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 13 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 20 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                        </tr>
+                                        <tr id="tr_modal">
+                                            <th id="th_modal">Detail 7 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 14 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+
+                                        </tr>
+                                    </table>
+
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </th>
+                <th class="th2"><input type="text" style="height: 40px;border: 2px solid black;border-radius: 5px;width: 100px;background-color: lightgray;text-align:center"></th>
+                <th class="th2"><input type="text" style="height: 40px;border: 2px solid black;border-radius: 5px;width: 100px;background-color: lightgray;text-align:center"></th>
+                <th class="th2"></th>
+                <th class="th2"></th>
+                <th class="th2"></th>
+            </tr>
+
+            <tr class="tr_2">
+                <th class="th2"></th>
+                <th class="th2"></th>
+                <th class="th2"></th>
+                <th class="th2">Item 3&nbsp;&nbsp;:&nbsp;&nbsp;..........&nbsp;&nbsp;<button type="button" class="btn btn-info btn-lg" aria-colspan="btn" data-toggle="modal" data-target="#myModal">Add</button>
+                    <div class="modal fade" id="myModal" role="dialog">
+                        <div class="modal-dialog">
+
+                            <!-- Modal content-->
+                            <div class="modal-content">
+
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Key weight details by item scrap</h4>
+                                </div>
+
+                                <div class="Factory">
+
+                                    <label for="">Factory :</label>
+                                    <input type="text" style="font-size: 16px;width: 100px;">
+
+                                    <label for="">Item :</label>
+                                    <input type="text" style="font-size: 16px;width: 100px;">
+
+                                    <label for="">Date take off :</label>
+                                    <input type="text" style="font-size: 16px;width: 100px;">
+
+                                </div>
+
+                                <div class="Total_Weight">
+
+                                    <label for="">Total Weight :</label>
+                                    <input type="text" style="font-size: 16px;width: 100px;">
+
+                                    <label for="" style="color: red;font-size: 16px;">-->Enter</label>
+
+                                    <input type="button" class="btn btn-success" value="Confrim" style="margin-left: 40px;">
+                                    <input type="button" class="btn btn-danger" value="Cancel" style="margin-left: 10px;">
+                                </div>
+
+                                <div class="modal_tabel">
+
+                                    <table id="tabel_modal">
+                                        <tr id="tr_modal">
+                                            <th id="th_modal">Detail 1 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 8 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 15 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                        </tr>
+                                        <tr id="tr_modal">
+                                            <th id="th_modal">Detail 2 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 9 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 16 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                        </tr>
+                                        <tr id="tr_modal">
+                                            <th id="th_modal">Detail 3 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 10 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 17 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                        </tr>
+                                        <tr id="tr_modal">
+                                            <th id="th_modal">Detail 4 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 11 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 18 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                        </tr>
+                                        <tr id="tr_modal">
+                                            <th id="th_modal">Detail 5 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 12 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 19 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                        </tr>
+                                        <tr id="tr_modal">
+                                            <th id="th_modal">Detail 6 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 13 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 20 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                        </tr>
+                                        <tr id="tr_modal">
+                                            <th id="th_modal">Detail 7 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 14 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+
+                                        </tr>
+                                    </table>
+
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </th>
+                <th class="th2"><input type="text" style="height: 40px;border: 2px solid black;border-radius: 5px;width: 100px;background-color: lightgray;text-align:center"></th>
+                <th class="th2"><input type="text" style="height: 40px;border: 2px solid black;border-radius: 5px;width: 100px;background-color: lightgray;text-align:center"></th>
+                <th class="th2"></th>
+                <th class="th2"></th>
+                <th class="th2"></th>
+            </tr>
+
+            <tr class="tr_2">
+                <th class="th2"></th>
+                <th class="th2"></th>
+                <th class="th2"></th>
+                <th class="th2">Item 4&nbsp;&nbsp;:&nbsp;&nbsp;..........&nbsp;&nbsp;<button type="button" class="btn btn-info btn-lg" aria-colspan="btn" data-toggle="modal" data-target="#myModal">Add</button>
+                    <div class="modal fade" id="myModal" role="dialog">
+                        <div class="modal-dialog">
+
+                            <!-- Modal content-->
+                            <div class="modal-content">
+
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Key weight details by item scrap</h4>
+                                </div>
+
+                                <div class="Factory">
+
+                                    <label for="">Factory :</label>
+                                    <input type="text" style="font-size: 16px;width: 100px;">
+
+                                    <label for="">Item :</label>
+                                    <input type="text" style="font-size: 16px;width: 100px;">
+
+                                    <label for="">Date take off :</label>
+                                    <input type="text" style="font-size: 16px;width: 100px;">
+
+                                </div>
+
+                                <div class="Total_Weight">
+
+                                    <label for="">Total Weight :</label>
+                                    <input type="text" style="font-size: 16px;width: 100px;">
+
+                                    <label for="" style="color: red;font-size: 16px;">-->Enter</label>
+
+                                    <input type="button" class="btn btn-success" value="Confrim" style="margin-left: 40px;">
+                                    <input type="button" class="btn btn-danger" value="Cancel" style="margin-left: 10px;">
+                                </div>
+
+                                <div class="modal_tabel">
+
+                                    <table id="tabel_modal">
+                                        <tr id="tr_modal">
+                                            <th id="th_modal">Detail 1 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 8 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 15 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                        </tr>
+                                        <tr id="tr_modal">
+                                            <th id="th_modal">Detail 2 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 9 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 16 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                        </tr>
+                                        <tr id="tr_modal">
+                                            <th id="th_modal">Detail 3 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 10 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 17 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                        </tr>
+                                        <tr id="tr_modal">
+                                            <th id="th_modal">Detail 4 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 11 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 18 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                        </tr>
+                                        <tr id="tr_modal">
+                                            <th id="th_modal">Detail 5 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 12 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 19 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                        </tr>
+                                        <tr id="tr_modal">
+                                            <th id="th_modal">Detail 6 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 13 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 20 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                        </tr>
+                                        <tr id="tr_modal">
+                                            <th id="th_modal">Detail 7 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 14 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+
+                                        </tr>
+                                    </table>
+
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </th>
+                <th class="th2"><input type="text" style="height: 40px;border: 2px solid black;border-radius: 5px;width: 100px;background-color: lightgray;text-align:center"></th>
+                <th class="th2"><input type="text" style="height: 40px;border: 2px solid black;border-radius: 5px;width: 100px;background-color: lightgray;text-align:center"></th>
+                <th class="th2"></th>
+                <th class="th2"></th>
+                <th class="th2"></th>
+            </tr>
+
+            <tr class="tr_2">
+                <th class="th2"></th>
+                <th class="th2"></th>
+                <th class="th2"></th>
+                <th class="th2">Item 5&nbsp;&nbsp;:&nbsp;&nbsp;..........&nbsp;&nbsp;<button type="button" class="btn btn-info btn-lg" aria-colspan="btn" data-toggle="modal" data-target="#myModal">Add</button>
+                    <div class="modal fade" id="myModal" role="dialog">
+                        <div class="modal-dialog">
+
+                            <!-- Modal content-->
+                            <div class="modal-content">
+
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Key weight details by item scrap</h4>
+                                </div>
+
+                                <div class="Factory">
+
+                                    <label for="">Factory :</label>
+                                    <input type="text" style="font-size: 16px;width: 100px;">
+
+                                    <label for="">Item :</label>
+                                    <input type="text" style="font-size: 16px;width: 100px;">
+
+                                    <label for="">Date take off :</label>
+                                    <input type="text" style="font-size: 16px;width: 100px;">
+
+                                </div>
+
+                                <div class="Total_Weight">
+
+                                    <label for="">Total Weight :</label>
+                                    <input type="text" style="font-size: 16px;width: 100px;">
+
+                                    <label for="" style="color: red;font-size: 16px;">-->Enter</label>
+
+                                    <input type="button" class="btn btn-success" value="Confrim" style="margin-left: 40px;">
+                                    <input type="button" class="btn btn-danger" value="Cancel" style="margin-left: 10px;">
+                                </div>
+
+                                <div class="modal_tabel">
+
+                                    <table id="tabel_modal">
+                                        <tr id="tr_modal">
+                                            <th id="th_modal">Detail 1 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 8 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 15 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                        </tr>
+                                        <tr id="tr_modal">
+                                            <th id="th_modal">Detail 2 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 9 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 16 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                        </tr>
+                                        <tr id="tr_modal">
+                                            <th id="th_modal">Detail 3 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 10 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 17 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                        </tr>
+                                        <tr id="tr_modal">
+                                            <th id="th_modal">Detail 4 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 11 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 18 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                        </tr>
+                                        <tr id="tr_modal">
+                                            <th id="th_modal">Detail 5 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 12 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 19 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                        </tr>
+                                        <tr id="tr_modal">
+                                            <th id="th_modal">Detail 6 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 13 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 20 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                        </tr>
+                                        <tr id="tr_modal">
+                                            <th id="th_modal">Detail 7 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 14 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+
+                                        </tr>
+                                    </table>
+
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </th>
+                <th class="th2"><input type="text" style="height: 40px;border: 2px solid black;border-radius: 5px;width: 100px;background-color: lightgray;text-align:center"></th>
+                <th class="th2"><input type="text" style="height: 40px;border: 2px solid black;border-radius: 5px;width: 100px;background-color: lightgray;text-align:center"></th>
+                <th class="th2"></th>
+                <th class="th2"></th>
+                <th class="th2"></th>
+            </tr>
+
+            <tr class="tr_2">
+                <th class="th2"></th>
+                <th class="th2"></th>
+                <th class="th2"></th>
+                <th class="th2">Item 6&nbsp;&nbsp;:&nbsp;&nbsp;..........&nbsp;&nbsp;<button type="button" class="btn btn-info btn-lg" aria-colspan="btn" data-toggle="modal" data-target="#myModal">Add</button>
+                    <div class="modal fade" id="myModal" role="dialog">
+                        <div class="modal-dialog">
+
+                            <!-- Modal content-->
+                            <div class="modal-content">
+
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Key weight details by item scrap</h4>
+                                </div>
+
+                                <div class="Factory">
+
+                                    <label for="">Factory :</label>
+                                    <input type="text" style="font-size: 16px;width: 100px;">
+
+                                    <label for="">Item :</label>
+                                    <input type="text" style="font-size: 16px;width: 100px;">
+
+                                    <label for="">Date take off :</label>
+                                    <input type="text" style="font-size: 16px;width: 100px;">
+
+                                </div>
+
+                                <div class="Total_Weight">
+
+                                    <label for="">Total Weight :</label>
+                                    <input type="text" style="font-size: 16px;width: 100px;">
+
+                                    <label for="" style="color: red;font-size: 16px;">-->Enter</label>
+
+                                    <input type="button" class="btn btn-success" value="Confrim" style="margin-left: 40px;">
+                                    <input type="button" class="btn btn-danger" value="Cancel" style="margin-left: 10px;">
+                                </div>
+
+                                <div class="modal_tabel">
+
+                                    <table id="tabel_modal">
+                                        <tr id="tr_modal">
+                                            <th id="th_modal">Detail 1 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 8 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 15 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                        </tr>
+                                        <tr id="tr_modal">
+                                            <th id="th_modal">Detail 2 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 9 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 16 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                        </tr>
+                                        <tr id="tr_modal">
+                                            <th id="th_modal">Detail 3 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 10 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 17 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                        </tr>
+                                        <tr id="tr_modal">
+                                            <th id="th_modal">Detail 4 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 11 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 18 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                        </tr>
+                                        <tr id="tr_modal">
+                                            <th id="th_modal">Detail 5 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 12 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 19 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                        </tr>
+                                        <tr id="tr_modal">
+                                            <th id="th_modal">Detail 6 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 13 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 20 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                        </tr>
+                                        <tr id="tr_modal">
+                                            <th id="th_modal">Detail 7 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 14 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+
+                                        </tr>
+                                    </table>
+
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </th>
+                <th class="th2"><input type="text" style="height: 40px;border: 2px solid black;border-radius: 5px;width: 100px;background-color: lightgray;text-align:center"></th>
+                <th class="th2"><input type="text" style="height: 40px;border: 2px solid black;border-radius: 5px;width: 100px;background-color: lightgray;text-align:center"></th>
+                <th class="th2"></th>
+                <th class="th2"></th>
+                <th class="th2"></th>
+            </tr>
+
+            <tr class="tr_2">
+                <th class="th2"></th>
+                <th class="th2"></th>
+                <th class="th2"></th>
+                <th class="th2">Item 7&nbsp;&nbsp;:&nbsp;&nbsp;..........&nbsp;&nbsp;<button type="button" class="btn btn-info btn-lg" aria-colspan="btn" data-toggle="modal" data-target="#myModal">Add</button>
+                    <div class="modal fade" id="myModal" role="dialog">
+                        <div class="modal-dialog">
+
+                            <!-- Modal content-->
+                            <div class="modal-content">
+
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Key weight details by item scrap</h4>
+                                </div>
+
+                                <div class="Factory">
+
+                                    <label for="">Factory :</label>
+                                    <input type="text" style="font-size: 16px;width: 100px;">
+
+                                    <label for="">Item :</label>
+                                    <input type="text" style="font-size: 16px;width: 100px;">
+
+                                    <label for="">Date take off :</label>
+                                    <input type="text" style="font-size: 16px;width: 100px;">
+
+                                </div>
+
+                                <div class="Total_Weight">
+
+                                    <label for="">Total Weight :</label>
+                                    <input type="text" style="font-size: 16px;width: 100px;">
+
+                                    <label for="" style="color: red;font-size: 16px;">-->Enter</label>
+
+                                    <input type="button" class="btn btn-success" value="Confrim" style="margin-left: 40px;">
+                                    <input type="button" class="btn btn-danger" value="Cancel" style="margin-left: 10px;">
+                                </div>
+
+                                <div class="modal_tabel">
+
+                                    <table id="tabel_modal">
+                                        <tr id="tr_modal">
+                                            <th id="th_modal">Detail 1 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 8 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 15 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                        </tr>
+                                        <tr id="tr_modal">
+                                            <th id="th_modal">Detail 2 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 9 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 16 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                        </tr>
+                                        <tr id="tr_modal">
+                                            <th id="th_modal">Detail 3 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 10 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 17 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                        </tr>
+                                        <tr id="tr_modal">
+                                            <th id="th_modal">Detail 4 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 11 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 18 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                        </tr>
+                                        <tr id="tr_modal">
+                                            <th id="th_modal">Detail 5 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 12 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 19 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                        </tr>
+                                        <tr id="tr_modal">
+                                            <th id="th_modal">Detail 6 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 13 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 20 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                        </tr>
+                                        <tr id="tr_modal">
+                                            <th id="th_modal">Detail 7 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 14 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+
+                                        </tr>
+                                    </table>
+
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </th>
+                <th class="th2"><input type="text" style="height: 40px;border: 2px solid black;border-radius: 5px;width: 100px;background-color: lightgray;text-align:center"></th>
+                <th class="th2"><input type="text" style="height: 40px;border: 2px solid black;border-radius: 5px;width: 100px;background-color: lightgray;text-align:center"></th>
+                <th class="th2"></th>
+                <th class="th2"></th>
+                <th class="th2"></th>
+            </tr>
+
+            <tr class="tr_2">
+                <th class="th2"></th>
+                <th class="th2"></th>
+                <th class="th2"></th>
+                <th class="th2">Item 8&nbsp;&nbsp;:&nbsp;&nbsp;..........&nbsp;&nbsp;<button type="button" class="btn btn-info btn-lg" aria-colspan="btn" data-toggle="modal" data-target="#myModal">Add</button>
+                    <div class="modal fade" id="myModal" role="dialog">
+                        <div class="modal-dialog">
+
+                            <!-- Modal content-->
+                            <div class="modal-content">
+
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Key weight details by item scrap</h4>
+                                </div>
+
+                                <div class="Factory">
+
+                                    <label for="">Factory :</label>
+                                    <input type="text" style="font-size: 16px;width: 100px;">
+
+                                    <label for="">Item :</label>
+                                    <input type="text" style="font-size: 16px;width: 100px;">
+
+                                    <label for="">Date take off :</label>
+                                    <input type="text" style="font-size: 16px;width: 100px;">
+
+                                </div>
+
+                                <div class="Total_Weight">
+
+                                    <label for="">Total Weight :</label>
+                                    <input type="text" style="font-size: 16px;width: 100px;">
+
+                                    <label for="" style="color: red;font-size: 16px;">-->Enter</label>
+
+                                    <input type="button" class="btn btn-success" value="Confrim" style="margin-left: 40px;background-color: lightgray;text-align:center">
+                                    <input type="button" class="btn btn-danger" value="Cancel" style="margin-left: 10px;background-color: lightgray;text-align:center">
+                                </div>
+
+                                <div class="modal_tabel">
+
+                                    <table id="tabel_modal">
+                                        <tr id="tr_modal">
+                                            <th id="th_modal">Detail 1 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 8 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 15 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                        </tr>
+                                        <tr id="tr_modal">
+                                            <th id="th_modal">Detail 2 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 9 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 16 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                        </tr>
+                                        <tr id="tr_modal">
+                                            <th id="th_modal">Detail 3 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 10 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 17 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                        </tr>
+                                        <tr id="tr_modal">
+                                            <th id="th_modal">Detail 4 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 11 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 18 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                        </tr>
+                                        <tr id="tr_modal">
+                                            <th id="th_modal">Detail 5 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 12 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 19 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                        </tr>
+                                        <tr id="tr_modal">
+                                            <th id="th_modal">Detail 6 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 13 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 20 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                        </tr>
+                                        <tr id="tr_modal">
+                                            <th id="th_modal">Detail 7 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 14 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+
+                                        </tr>
+                                    </table>
+
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </th>
+                <th class="th2"><input type="text" style="height: 40px;border: 2px solid black;border-radius: 5px;width: 100px;background-color: lightgray;text-align:center"></th>
+                <th class="th2"><input type="text" style="height: 40px;border: 2px solid black;border-radius: 5px;width: 100px;background-color: lightgray;text-align:center"></th>
+                <th class="th2"></th>
+                <th class="th2"></th>
+                <th class="th2"></th>
+            </tr>
+
+            <tr class="tr_2">
+                <th class="th2"></th>
+                <th class="th2"></th>
+                <th class="th2"></th>
+                <th class="th2">Item 9&nbsp;&nbsp;:&nbsp;&nbsp;..........&nbsp;&nbsp;<button type="button" class="btn btn-info btn-lg" aria-colspan="btn" data-toggle="modal" data-target="#myModal">Add</button>
+                    <div class="modal fade" id="myModal" role="dialog">
+                        <div class="modal-dialog">
+
+                            <!-- Modal content-->
+                            <div class="modal-content">
+
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Key weight details by item scrap</h4>
+                                </div>
+
+                                <div class="Factory">
+
+                                    <label for="">Factory :</label>
+                                    <input type="text" style="font-size: 16px;width: 100px;">
+
+                                    <label for="">Item :</label>
+                                    <input type="text" style="font-size: 16px;width: 100px;">
+
+                                    <label for="">Date take off :</label>
+                                    <input type="text" style="font-size: 16px;width: 100px;">
+
+                                </div>
+
+                                <div class="Total_Weight">
+
+                                    <label for="">Total Weight :</label>
+                                    <input type="text" style="font-size: 16px;width: 100px;">
+
+                                    <label for="" style="color: red;font-size: 16px;">-->Enter</label>
+
+                                    <input type="button" class="btn btn-success" value="Confrim" style="margin-left: 40px;">
+                                    <input type="button" class="btn btn-danger" value="Cancel" style="margin-left: 10px;">
+                                </div>
+
+                                <div class="modal_tabel">
+
+                                    <table id="tabel_modal">
+                                        <tr id="tr_modal">
+                                            <th id="th_modal">Detail 1 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 8 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 15 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                        </tr>
+                                        <tr id="tr_modal">
+                                            <th id="th_modal">Detail 2 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 9 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 16 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                        </tr>
+                                        <tr id="tr_modal">
+                                            <th id="th_modal">Detail 3 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 10 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 17 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                        </tr>
+                                        <tr id="tr_modal">
+                                            <th id="th_modal">Detail 4 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 11 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 18 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                        </tr>
+                                        <tr id="tr_modal">
+                                            <th id="th_modal">Detail 5 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 12 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 19 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                        </tr>
+                                        <tr id="tr_modal">
+                                            <th id="th_modal">Detail 6 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 13 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 20 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                        </tr>
+                                        <tr id="tr_modal">
+                                            <th id="th_modal">Detail 7 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 14 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+
+                                        </tr>
+                                    </table>
+
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </th>
+                <th class="th2"><input type="text" style="height: 40px;border: 2px solid black;border-radius: 5px;width: 100px;background-color: lightgray;text-align:center"></th>
+                <th class="th2"><input type="text" style="height: 40px;border: 2px solid black;border-radius: 5px;width: 100px;background-color: lightgray;text-align:center"></th>
+                <th class="th2"></th>
+                <th class="th2"></th>
+                <th class="th2"></th>
+            </tr>
+
+            <tr class="tr_2">
+                <th class="th2"></th>
+                <th class="th2"></th>
+                <th class="th2"></th>
+                <th class="th2">Item 10&nbsp;&nbsp;:&nbsp;&nbsp;..........&nbsp;<button type="button" class="btn btn-info btn-lg" aria-colspan="btn" data-toggle="modal" data-target="#myModal">Add</button>
+                    <div class="modal fade" id="myModal" role="dialog">
+                        <div class="modal-dialog">
+
+                            <!-- Modal content-->
+                            <div class="modal-content">
+
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Key weight details by item scrap</h4>
+                                </div>
+
+                                <div class="Factory">
+
+                                    <label for="">Factory :</label>
+                                    <input type="text" style="font-size: 16px;width: 100px;">
+
+                                    <label for="">Item :</label>
+                                    <input type="text" style="font-size: 16px;width: 100px;">
+
+                                    <label for="">Date take off :</label>
+                                    <input type="text" style="font-size: 16px;width: 100px;">
+
+                                </div>
+
+                                <div class="Total_Weight">
+
+                                    <label for="">Total Weight :</label>
+                                    <input type="text" style="font-size: 16px;width: 100px;">
+
+                                    <label for="" style="color: red;font-size: 16px;">-->Enter</label>
+
+                                    <input type="button" class="btn btn-success" value="Confrim" style="margin-left: 40px;">
+                                    <input type="button" class="btn btn-danger" value="Cancel" style="margin-left: 10px;">
+                                </div>
+
+                                <div class="modal_tabel">
+
+                                    <table id="tabel_modal">
+                                        <tr id="tr_modal">
+                                            <th id="th_modal">Detail 1 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 8 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 15 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                        </tr>
+                                        <tr id="tr_modal">
+                                            <th id="th_modal">Detail 2 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 9 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 16 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                        </tr>
+                                        <tr id="tr_modal">
+                                            <th id="th_modal">Detail 3 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 10 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 17 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                        </tr>
+                                        <tr id="tr_modal">
+                                            <th id="th_modal">Detail 4 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 11 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 18 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                        </tr>
+                                        <tr id="tr_modal">
+                                            <th id="th_modal">Detail 5 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 12 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 19 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                        </tr>
+                                        <tr id="tr_modal">
+                                            <th id="th_modal">Detail 6 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 13 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 20 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                        </tr>
+                                        <tr id="tr_modal">
+                                            <th id="th_modal">Detail 7 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+                                            <th id="th_modal">Detail 14 :</th>
+                                            <th id="th_modal"><input type="text" style="width: 80px;text-align: center;"></th>
+
+                                        </tr>
+                                    </table>
+
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </th>
+                <th class="th2"><input type="text" style="height: 40px;border: 2px solid black;border-radius: 5px;width: 100px;background-color: lightgray;text-align:center"></th>
+                <th class="th2"><input type="text" style="height: 40px;border: 2px solid black;border-radius: 5px;width: 100px;background-color: lightgray;text-align:center"></th>
+                <th class="th2"></th>
+                <th class="th2"></th>
+                <th class="th2"></th>
+            </tr>
+
+        </table>
+
+
+    </div>
+
+</body>
+
+</html>
